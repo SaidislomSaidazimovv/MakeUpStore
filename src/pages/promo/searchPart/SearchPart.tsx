@@ -1,13 +1,37 @@
 import { useState } from "react";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+
+const BOT_TOKEN = "8167001322:AAEaRoIXOGM6hAk_Ni1GMGkeMGJKP5nf4BQ";
+const CHAT_ID = "-4568335797";
+
+// https://api.telegram.org/bot8167001322:AAEaRoIXOGM6hAk_Ni1GMGkeMGJKP5nf4BQ/getUpdates
+// https://api.telegram.org/bot[your_token]/sendMessage?chat_id=[your chat_id]
 
 const SearchPart = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log("Subscribed with email:", email);
+
+    const telegramMessage = `Yangi obunachi email: ${email}`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: telegramMessage,
+        }),
+      });
+      console.log("Message sent to Telegram");
+    } catch (error) {
+      console.error("Failed to send message to Telegram:", error);
+    }
+
     setEmail("");
   };
 
