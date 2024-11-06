@@ -121,14 +121,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(80, 85).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(80, 85).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
@@ -180,14 +195,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(140, 145).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(140, 145).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
@@ -239,14 +269,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(235, 240).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(235, 240).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
@@ -297,14 +342,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(270, 275).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(270, 275).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
@@ -356,14 +416,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(490, 495).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(490, 495).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
@@ -415,14 +490,29 @@ const ProductList: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredProducts?.slice(760, 765).map((product) => (
-          <div
-            key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
+        {isLoading
+          ? [...Array(5)].map((_, index) => (
+              <div
+                key={index}
+                className="animate-pulse bg-gray-200 rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="h-48 bg-gray-300 rounded-md"></div>
+                <div className="p-4">
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                  <div className="h-10 bg-gray-300 rounded"></div>
+                </div>
+              </div>
+            ))
+          : filteredProducts?.slice(760, 765).map((product) => (
+              <div
+                key={product.id}
+                className="cursor-pointer transition-transform transform hover:scale-105"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
       </div>
 
       <div className="flex justify-center gap-10 mt-24 mx-5">
