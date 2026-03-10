@@ -7,7 +7,6 @@ const SearchPart = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log("Subscribed with email:", email);
     setEmail("");
   };
 
