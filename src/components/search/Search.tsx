@@ -41,11 +41,14 @@ const Search: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (searchTerm) {
-      handleSearch();
-    } else {
+    if (!searchTerm.trim()) {
       setResults([]);
+      return;
     }
+    const timer = setTimeout(() => {
+      handleSearch();
+    }, 400);
+    return () => clearTimeout(timer);
   }, [searchTerm, productType, category]);
 
   const handleSearch = async () => {
@@ -68,7 +71,7 @@ const Search: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       handleSearch();
     }
@@ -118,7 +121,7 @@ const Search: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
             className="flex-grow outline-none text-lg"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
           />
           <select
             value={productType}
