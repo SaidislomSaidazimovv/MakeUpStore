@@ -6,7 +6,7 @@ import ImageCarousel from "./carousel/ImageCarousel";
 import ClipLoader from "react-spinners/ClipLoader";
 import { MdExpandMore } from "react-icons/md";
 import { MdOutlineExpandLess } from "react-icons/md";
-import Sidebar from "./leftSideBar/LeftSideBar";
+import Sidebar from "../promo/sidebar/SideBar";
 
 const Category: React.FC = () => {
   const { category } = useParams<{ category: string }>();
