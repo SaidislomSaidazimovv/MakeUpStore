@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Search.css";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -51,7 +53,7 @@ const Search: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
     setError("");
     try {
       const response = await axios.get(
-        `https://makeup-api.herokuapp.com/api/v1/products.json?brand=${encodeURIComponent(
+        `${BASE_URL}products.json?brand=${encodeURIComponent(
           searchTerm
         )}&product_type=${encodeURIComponent(productType)}${
           category !== "all" ? `&category=${encodeURIComponent(category)}` : ""

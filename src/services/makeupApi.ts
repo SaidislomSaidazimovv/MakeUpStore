@@ -21,7 +21,7 @@ export interface Product {
 export const makeupApi = createApi({
   reducerPath: "makeupApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://makeup-api.herokuapp.com/api/v1/",
+    baseUrl: import.meta.env.VITE_BASE_URL,
   }),
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({
