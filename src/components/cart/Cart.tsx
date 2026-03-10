@@ -7,6 +7,7 @@ import {
   clearCart,
 } from "../../features/cartSlice";
 import { Trash2, Minus, Plus, ShoppingCart } from "lucide-react";
+import { formatPrice } from "../../utils/formatPrice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -25,16 +26,6 @@ const Cart: React.FC = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
-  };
-
-  const Price = (price: string) => {
-    const numericPrice = parseFloat(price);
-    if (isNaN(numericPrice)) return "";
-
-    if (currency === "UZS") {
-      return (numericPrice * 12600).toLocaleString() + " UZS";
-    }
-    return "$" + numericPrice.toFixed(2);
   };
 
   const totalPrice = cartItems.reduce(
@@ -91,7 +82,7 @@ const Cart: React.FC = () => {
               </button>
             </div>
             <p className="text-lg font-bold mr-4">
-              {Price((parseFloat(item.price) * item.quantity).toFixed(2))}
+              {formatPrice(parseFloat(item.price) * item.quantity, currency)}
             </p>
             <button
               onClick={() => handleRemoveItem(item.id)}
@@ -110,7 +101,7 @@ const Cart: React.FC = () => {
           Clear Cart
         </button>
         <div className="text-2xl font-bold">
-          Total: {Price(totalPrice.toFixed(2))}
+          Total: {formatPrice(totalPrice, currency)}
         </div>
       </div>
     </div>

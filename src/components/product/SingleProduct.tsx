@@ -7,6 +7,7 @@ import { addToLikes, removeFromLikes } from "../../features/likeSlice";
 import { RootState } from "../../app/index";
 import { Heart, ShoppingCart, Truck, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
+import { formatPrice } from "../../utils/formatPrice";
 
 const SingleProduct: React.FC = () => {
   const { id } = useParams<{ id: string }>() as { id: string };
@@ -26,14 +27,6 @@ const SingleProduct: React.FC = () => {
         ? dispatch(removeFromLikes(product.id))
         : dispatch(addToLikes(product));
     }
-  };
-
-  const formatPrice = (price: string) => {
-    const numericPrice = parseFloat(price);
-    if (isNaN(numericPrice)) return "";
-    return currency === "UZS"
-      ? `${(numericPrice * 12600).toLocaleString()} сум`
-      : `$${numericPrice.toFixed(2)}`;
   };
 
   if (isLoading) return <div className="animate-pulse">Loading...</div>;
@@ -117,7 +110,7 @@ const SingleProduct: React.FC = () => {
             </div>
 
             <p className="text-3xl font-bold text-blue-600 mb-4">
-              {formatPrice(product.price)}
+              {formatPrice(product.price, currency)}
             </p>
           </div>
 

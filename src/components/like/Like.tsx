@@ -5,10 +5,12 @@ import { removeFromLikes } from "../../features/likeSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../utils/formatPrice";
 import "react-toastify/dist/ReactToastify.css";
 
 const Like: React.FC = () => {
   const likes = useSelector((state: RootState) => state.likes.items);
+  const currency = useSelector((state: RootState) => state.currency.selected);
   const dispatch = useDispatch();
 
   const handleRemoveFromLikes = (productId: number) => {
@@ -51,7 +53,7 @@ const Like: React.FC = () => {
                 </h3>
                 <p className="text-gray-500">{product.brand}</p>
                 <p className="text-gray-800 font-semibold mt-2">
-                  ${product.price}
+                  {formatPrice(product.price, currency)}
                 </p>
                 <button
                   onClick={() => handleRemoveFromLikes(product.id)}

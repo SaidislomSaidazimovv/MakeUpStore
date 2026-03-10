@@ -6,6 +6,7 @@ import { addToCart } from "../../features/cartSlice";
 import { addToLikes } from "../../features/likeSlice";
 import { RootState } from "../../app/index";
 import { Heart, ShoppingCart, ChevronDown } from "lucide-react";
+import { formatPrice } from "../../utils/formatPrice";
 
 interface ProductCardProps {
   product?: Product;
@@ -41,16 +42,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const handleImageLoad = () => {
     setIsLoading(false);
-  };
-
-  const Price = (price: string) => {
-    const numericPrice = parseFloat(price);
-    if (isNaN(numericPrice)) return "";
-
-    if (currency === "UZS") {
-      return (numericPrice * 12600).toLocaleString() + " UZS";
-    }
-    return "$" + numericPrice.toFixed(2);
   };
 
   const options = ["50 ml", "100 ml"];
@@ -117,7 +108,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <span className="text-sm ml-2 text-gray-600">(225 отзывов)</span>
           </div>
           <p className="text-xl font-bold text-blue-600 mb-4">
-            {Price(product.price)}
+            {formatPrice(product.price, currency)}
           </p>
 
           <div className="relative mb-4">
