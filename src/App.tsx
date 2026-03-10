@@ -6,7 +6,6 @@ import ProductList from "./components/product/ProductList";
 import SingleProduct from "./components/product/SingleProduct";
 import Like from "./components/like/Like";
 import Cart from "./components/cart/Cart";
-import Search from "./components/search/Search";
 import "./App.css";
 import Promo from "./pages/promo/Promo";
 import Shipping from "./pages/shipping/Shipping";
@@ -27,18 +26,6 @@ const App: React.FC = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/like" element={<Like />} />
           <Route path="/cart" element={<Cart />} />
-          <Route
-            path="/search"
-            element={
-              <Search
-                isOpen={false}
-                onClose={function (): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            }
-          />
-
           <Route path="/promo" element={<Promo />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/about" element={<About />} />
