@@ -13,6 +13,7 @@ import About from "./pages/about/About";
 import BeautyClub from "./pages/beauty-club/BeautyClub";
 import CategoryPage from "./pages/category/Category";
 import Profile from "./components/profile/Profile";
+import NotFound from "./pages/not-found/NotFound";
 
 const App: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: React.FC = () => {
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/about" element={<About />} />
           <Route path="/beauty-club" element={<BeautyClub />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
