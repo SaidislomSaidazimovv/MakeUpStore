@@ -1,26 +1,4 @@
-import { useState, useEffect } from "react";
-
 const About = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-gradient-to-r">
-        <div className="flex flex-col items-center space-y-4">
-          <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-black"></div>
-          <span className="black-white font-semibold text-lg">Loading...</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col items-center py-10 px-5 lg:px-32">
       <h1 className="text-3xl font-bold text-center mb-6 animate-fade-in">
