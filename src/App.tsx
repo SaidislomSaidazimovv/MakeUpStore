@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import "./App.css";
@@ -22,6 +24,7 @@ const App: React.FC = () => {
 
   return (
     <div className="startCs flex flex-col min-h-screen bg-white">
+      <ToastContainer />
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
         <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>

@@ -3,8 +3,6 @@ import { useGetProductsQuery } from "../../services/makeupApi";
 import ProductCard from "./ProductCard";
 import ImageCarousel from "../carousel/Carousel";
 import CategoryCarousel from "./category/CategoryProductList";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PageTransition from "../PageTransition";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -21,7 +19,6 @@ const ProductList: React.FC = () => {
   return (
     <PageTransition>
     <div className="container mx-auto p-4">
-      <ToastContainer />
       <ImageCarousel />
 
       <CategoryCarousel />
