@@ -29,43 +29,52 @@ const CategoryProductList: React.FC = () => {
   };
 
   return (
-    <div className="relative mb-8">
-      <div className="flex items-center justify-center">
-        <div className="flex overflow-x-auto space-x-4 py-4 px-4 scrollbar-hide gap-8">
-          {categories.map((category) => (
-            <motion.div
-              key={category.name}
-              className="flex-shrink-0"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => handleCategoryClick(category.name)}
-            >
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-center text-sm mt-2">{category.name}</p>
-            </motion.div>
-          ))}
+    <>
+      <div className="mb-8">
+        <div className="flex items-center justify-center">
+          <div className="flex overflow-x-auto space-x-4 py-4 px-4 scrollbar-hide gap-8">
+            {categories.map((category) => (
+              <motion.div
+                key={category.name}
+                className="flex-shrink-0"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleCategoryClick(category.name)}
+              >
+                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <p className="text-center text-sm mt-2">{category.name}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
       <AnimatePresence>
         {selectedCategory && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center"
-            style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
+            className="fixed inset-0 flex items-center justify-center"
+            style={{ backgroundColor: "rgba(0,0,0,0.55)", zIndex: 9999 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
           >
             <motion.div
-              className="bg-white rounded-2xl shadow-2xl relative"
-              style={{ width: "90%", maxWidth: "480px", padding: "24px", zIndex: 51 }}
+              style={{
+                position: "relative",
+                width: "90%",
+                maxWidth: "480px",
+                backgroundColor: "white",
+                borderRadius: "16px",
+                padding: "24px",
+                zIndex: 10000,
+              }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -97,7 +106,7 @@ const CategoryProductList: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 
