@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/index";
 import { GrFavorite } from "react-icons/gr";
@@ -9,12 +10,21 @@ import { setCurrency } from "../../features/currencySlice";
 import { TfiSearch } from "react-icons/tfi";
 import { CiUser } from "react-icons/ci";
 import { BsHandbag } from "react-icons/bs";
+import { ChevronDown } from "lucide-react";
 import headerLogo from "../../assets/headerlogo.svg";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 import "./Header.css";
 
 const Header: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const languages = [
+    { code: "en", label: "EN" },
+    { code: "ru", label: "RU" },
+    { code: "uz", label: "UZ" },
+    { code: "zh", label: "ZH" },
+  ];
   const dispatch = useDispatch();
   const { isLoading } = useCurrency();
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -39,20 +49,20 @@ const Header: React.FC = () => {
     <header className="bg-white top-0 z-50 shadow-sm container mx-auto">
       <div className="bg-gray-100 py-2 text-sm">
         <div className="container mx-auto flex justify-between items-center px-4">
-          <span className="text-gray-600">Бесплатная доставка!</span>
+          <span className="text-gray-600">{t("nav.freeDelivery")}</span>
           <div className="flex space-x-4 text-gray-600">
             <Link to="/promo" className="text-red-500">
-              Акции
+              {t("nav.promotions")}
             </Link>
             <Link to="/shipping" className="hover:text-blue-800">
-              Доставка и Оплата
+              {t("nav.deliveryPayment")}
             </Link>
             <Link to="/about" className="hover:text-blue-800">
-              О магазине
+              {t("nav.aboutStore")}
             </Link>
           </div>
           <Link to="/beauty-club" className="hover:text-blue-800">
-            <span className="mr-1">★</span> Beauty Club
+            <span className="mr-1">★</span> {t("nav.beautyClub")}
           </Link>
         </div>
       </div>
@@ -72,6 +82,25 @@ const Header: React.FC = () => {
         </Link>
 
         <div className="flex items-center space-x-6">
+          <div className="relative group">
+            <button className="flex items-center gap-1 px-3 py-1 border border-rose-200 rounded-full text-sm text-rose-600 hover:bg-rose-50 transition">
+              {languages.find(l => l.code === i18n.language)?.label || "EN"}
+              <ChevronDown size={14} />
+            </button>
+            <div className="absolute right-0 top-8 bg-white border border-rose-100 rounded-xl shadow-lg hidden group-hover:flex flex-col z-50 min-w-[80px]">
+              {languages.map(lang => (
+                <button
+                  key={lang.code}
+                  onClick={() => i18n.changeLanguage(lang.code)}
+                  className={`flex items-center gap-2 px-3 py-2 text-sm hover:bg-rose-50 transition first:rounded-t-xl last:rounded-b-xl ${
+                    i18n.language === lang.code ? "text-rose-600 font-semibold" : "text-gray-700"
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="relative">
             <select
               value={currency}
@@ -121,43 +150,23 @@ const Header: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex gap-32 justify-center">
-        <Link to="/category/blush">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Blush
-          </h2>
-        </Link>
-        <Link to="/category/bronzer">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Bronzer
-          </h2>
-        </Link>
-        <Link to="/category/eyeliner">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Eyeliner
-          </h2>
-        </Link>
-        <Link to="/category/eyeshadow">
-          <h2 className="hover:text-purple-800 ml-20 text-lg font-bold transition duration-300">
-            Eyeshadow
-          </h2>
-        </Link>
-        <Link to="/category/foundation">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Foundation
-          </h2>
-        </Link>
-        <Link to="/category/lipstick">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Lipstick
-          </h2>
-        </Link>
-        <Link to="/category/mascara">
-          <h2 className="hover:text-purple-800 text-lg font-bold transition duration-300">
-            Mascara
-          </h2>
-        </Link>
-      </div>
+      <nav className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 justify-center px-4 py-2">
+        {["Blush", "Bronzer", "Eyeliner", "Eyeshadow", "Foundation", "Lipstick", "Mascara"].map((item) => (
+          <NavLink
+            key={item}
+            to={`/category/${item.toLowerCase()}`}
+            className={({ isActive }) =>
+              `pb-1 text-lg font-bold transition-all duration-200 border-b-2 ${
+                isActive
+                  ? "text-rose-600 font-semibold border-rose-600"
+                  : "text-gray-800 border-transparent hover:text-rose-500 hover:border-rose-400"
+              }`
+            }
+          >
+            {item}
+          </NavLink>
+        ))}
+      </nav>
     </header>
   );
 };
