@@ -7,6 +7,7 @@ import { addToLikes } from "../../features/likeSlice";
 import { RootState } from "../../app/index";
 import { Heart, ShoppingCart, ChevronDown } from "lucide-react";
 import { formatPrice } from "../../utils/formatPrice";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   product?: Product;
@@ -47,11 +48,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const options = ["50 ml", "100 ml"];
 
   return (
-    <>
-      <div
+      <motion.div
         className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl relative"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <Link to={`/product/${product.id}`} className="block relative">
           {isLoading && (
@@ -165,8 +169,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </span>
           </button>
         </div>
-      </div>
-    </>
+      </motion.div>
   );
 };
 
