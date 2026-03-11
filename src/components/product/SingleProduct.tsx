@@ -100,20 +100,23 @@ const SingleProduct: React.FC = () => {
             </div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
             <p className="text-xl text-gray-600 mb-2">{product.brand}</p>
-            <div className="flex items-center mb-4">
-              <div className="flex mr-2">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-4 h-4 fill-current text-yellow-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                  </svg>
-                ))}
+            {product.rating != null && (
+              <div className="flex items-center mb-4">
+                <div className="flex mr-2">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className={`w-4 h-4 fill-current ${
+                        i < Math.round(product.rating!) ? "text-yellow-500" : "text-gray-300"
+                      }`}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))}
+                </div>
               </div>
-              <span className="text-sm text-gray-600">(225 отзывов)</span>
-            </div>
+            )}
 
             <p className="text-3xl font-bold text-blue-600 mb-4">
               {formatPrice(product.price, currency)}
