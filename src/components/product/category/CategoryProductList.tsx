@@ -37,12 +37,10 @@ const CategoryProductList: React.FC = () => {
             {categories.map((category) => (
               <motion.div
                 key={category.name}
-                className="flex-shrink-0"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                className="flex-shrink-0 cursor-pointer"
                 onClick={() => handleCategoryClick(category.name)}
               >
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 hover:border-blue-500 transition-all duration-300 cursor-pointer">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 hover:border-rose-400 transition-all duration-300">
                   <img
                     src={category.image}
                     alt={category.name}
