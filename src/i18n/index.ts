@@ -17,7 +17,12 @@ i18n
       uz: { translation: uz },
       zh: { translation: zh },
     },
-    fallbackLng: "en",
+    lng: "ru",
+    fallbackLng: "ru",
+    detection: {
+      order: [],
+      caches: ["localStorage"],
+    },
     interpolation: { escapeValue: false },
   });
 

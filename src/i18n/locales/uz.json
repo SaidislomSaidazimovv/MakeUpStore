@@ -4,7 +4,14 @@
     "promotions": "Aksiyalar",
     "deliveryPayment": "Yetkazib berish va To'lov",
     "aboutStore": "Do'kon haqida",
-    "beautyClub": "Beauty Club"
+    "beautyClub": "Beauty Club",
+    "blush": "Yuz bo'yog'i",
+    "bronzer": "Bronzer",
+    "eyeliner": "Ko'z surtmasi",
+    "eyeshadow": "Ko'z soyasi",
+    "foundation": "Tonal krem",
+    "lipstick": "Lab bo'yog'i",
+    "mascara": "Tupik"
   },
   "header": {
     "search": "Qidirish",

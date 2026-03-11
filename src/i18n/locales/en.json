@@ -4,7 +4,14 @@
     "promotions": "Promotions",
     "deliveryPayment": "Delivery & Payment",
     "aboutStore": "About Store",
-    "beautyClub": "Beauty Club"
+    "beautyClub": "Beauty Club",
+    "blush": "Blush",
+    "bronzer": "Bronzer",
+    "eyeliner": "Eyeliner",
+    "eyeshadow": "Eyeshadow",
+    "foundation": "Foundation",
+    "lipstick": "Lipstick",
+    "mascara": "Mascara"
   },
   "header": {
     "search": "Search",

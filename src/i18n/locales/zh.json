@@ -4,7 +4,14 @@
     "promotions": "促销活动",
     "deliveryPayment": "配送与支付",
     "aboutStore": "关于我们",
-    "beautyClub": "美妆俱乐部"
+    "beautyClub": "美妆俱乐部",
+    "blush": "腮红",
+    "bronzer": "修容",
+    "eyeliner": "眼线",
+    "eyeshadow": "眼影",
+    "foundation": "粉底",
+    "lipstick": "口红",
+    "mascara": "睫毛膏"
   },
   "header": {
     "search": "搜索",

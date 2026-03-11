@@ -151,10 +151,10 @@ const Header: React.FC = () => {
       </AnimatePresence>
 
       <nav className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 justify-center px-4 py-2">
-        {["Blush", "Bronzer", "Eyeliner", "Eyeshadow", "Foundation", "Lipstick", "Mascara"].map((item) => (
+        {["blush", "bronzer", "eyeliner", "eyeshadow", "foundation", "lipstick", "mascara"].map((cat) => (
           <NavLink
-            key={item}
-            to={`/category/${item.toLowerCase()}`}
+            key={cat}
+            to={`/category/${cat}`}
             className={({ isActive }) =>
               `pb-1 text-lg font-bold transition-all duration-200 border-b-2 ${
                 isActive
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
               }`
             }
           >
-            {item}
+            {t(`nav.${cat}`)}
           </NavLink>
         ))}
       </nav>

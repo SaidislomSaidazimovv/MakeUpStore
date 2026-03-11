@@ -4,7 +4,14 @@
     "promotions": "Акции",
     "deliveryPayment": "Доставка и Оплата",
     "aboutStore": "О магазине",
-    "beautyClub": "Beauty Club"
+    "beautyClub": "Beauty Club",
+    "blush": "Румяна",
+    "bronzer": "Бронзер",
+    "eyeliner": "Подводка",
+    "eyeshadow": "Тени",
+    "foundation": "Тональный крем",
+    "lipstick": "Помада",
+    "mascara": "Тушь"
   },
   "header": {
     "search": "Поиск",
