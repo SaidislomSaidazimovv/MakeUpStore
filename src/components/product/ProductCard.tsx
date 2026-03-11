@@ -56,8 +56,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onMouseLeave={() => setIsHovered(false)}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
@@ -94,8 +92,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className={`absolute top-2 right-2 p-2 rounded-full ${
               isLike ? "bg-red-500 text-white" : "bg-white text-gray-700"
             } shadow-md`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
           >
             <Heart size={20} />
           </motion.button>
@@ -166,8 +162,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-700"
             }`}
-            whileHover={!isInCart && selectedOption ? { scale: 1.03 } : {}}
-            whileTap={!isInCart && selectedOption ? { scale: 0.97 } : {}}
           >
             <ShoppingCart size={20} />
             <span>
