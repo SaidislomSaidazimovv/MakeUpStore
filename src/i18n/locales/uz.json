@@ -192,7 +192,10 @@
   "searchpart": {
     "subscribe": "Chegirmalar va yangiliklar haqida birinchi bo'lib xabardor bo'ling!",
     "email": "Elektron pochta",
-    "button": "OBUNA BO'LISH"
+    "button": "OBUNA BO'LISH",
+    "sending": "Yuborilmoqda...",
+    "success": "Obuna bo'ldingiz!",
+    "error": "Xatolik, qayta urinib ko'ring"
   },
   "notfound": {
     "title": "Sahifa topilmadi",

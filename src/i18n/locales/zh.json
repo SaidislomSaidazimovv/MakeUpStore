@@ -192,7 +192,10 @@
   "searchpart": {
     "subscribe": "第一时间了解促销和新品资讯！",
     "email": "电子邮箱",
-    "button": "订阅"
+    "button": "订阅",
+    "sending": "发送中...",
+    "success": "已订阅！",
+    "error": "错误，请重试"
   },
   "notfound": {
     "title": "页面未找到",

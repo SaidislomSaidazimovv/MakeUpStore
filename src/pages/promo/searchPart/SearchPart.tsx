@@ -2,14 +2,42 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const SearchPart = () => {
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEmail("");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return;
+
+    setStatus("sending");
+
+    try {
+      const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+      const text = `📩 New subscription:\n${email}`;
+
+      const res = await fetch(
+        `https://api.telegram.org/bot${token}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: chatId, text }),
+        }
+      );
+
+      if (!res.ok) throw new Error("Telegram API error");
+
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -28,12 +56,27 @@ const SearchPart = () => {
             placeholder={t("searchpart.email")}
           />
           <div className="mt-3 sm:mt-0 sm:ml-3">
-            <button
+            <motion.button
               type="submit"
-              className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-none text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:w-auto"
+              disabled={status === "sending"}
+              className={`w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-none text-white sm:w-auto ${
+                status === "sending"
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : status === "success"
+                  ? "bg-green-600"
+                  : status === "error"
+                  ? "bg-red-600 hover:bg-red-700"
+                  : "bg-purple-600 hover:bg-purple-700"
+              } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500`}
             >
-              {t("searchpart.button")}
-            </button>
+              {status === "sending"
+                ? t("searchpart.sending")
+                : status === "success"
+                ? t("searchpart.success")
+                : status === "error"
+                ? t("searchpart.error")
+                : t("searchpart.button")}
+            </motion.button>
           </div>
         </form>
         <div className="mt-8 flex justify-center -ml-5 space-x-6">
