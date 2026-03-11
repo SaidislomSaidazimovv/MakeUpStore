@@ -42,7 +42,7 @@ const Category: React.FC = () => {
           {products?.slice(0, visibleCount).map((product) => (
             <div
               key={product.id}
-              className="cursor-pointer transition-transform transform hover:scale-105"
+              className="cursor-pointer"
             >
               <ProductCard product={product} />
             </div>

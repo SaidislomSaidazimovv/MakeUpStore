@@ -61,7 +61,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(50, 55).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -102,7 +102,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(80, 85).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -166,7 +166,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(140, 145).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -230,7 +230,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(235, 240).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -294,7 +294,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(270, 275).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -358,7 +358,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(490, 495).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>
@@ -422,7 +422,7 @@ const ProductList: React.FC = () => {
         {filteredProducts?.slice(760, 765).map((product) => (
           <div
             key={product.id}
-            className="cursor-pointer transition-transform transform hover:scale-105"
+            className="cursor-pointer"
           >
             <ProductCard product={product} />
           </div>

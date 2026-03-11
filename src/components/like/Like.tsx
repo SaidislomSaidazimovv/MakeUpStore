@@ -40,7 +40,7 @@ const Like: React.FC = () => {
           {likes.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105"
+              className="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300"
             >
               <Link to={`/product/${product.id}`}>
                 <img
@@ -59,7 +59,7 @@ const Like: React.FC = () => {
                 </p>
                 <button
                   onClick={() => handleRemoveFromLikes(product.id)}
-                  className="mt-4 w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition-colors duration-300 transform hover:scale-105"
+                  className="mt-4 w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition-colors duration-300"
                 >
                   {t("favorites.remove")}
                 </button>
