@@ -110,17 +110,10 @@ const CategoryProductList: React.FC = () => {
                   </video>
                 </div>
 
-                <div className="px-5 pb-4 flex items-center justify-between">
+                <div className="px-5 pb-4">
                   <p className="text-xs text-gray-400 tracking-widest uppercase">
                     Brand Video
                   </p>
-                  <motion.button
-                    onClick={handleClose}
-                    whileHover={{ x: 3 }}
-                    className="text-xs text-rose-400 hover:text-rose-600 transition flex items-center gap-1"
-                  >
-                    Close ›
-                  </motion.button>
                 </div>
               </motion.div>
             </motion.div>
