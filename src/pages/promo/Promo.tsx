@@ -1,48 +1,33 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import slide1 from "../../assets/slide1.jpg";
-import slide2 from "../../assets/slide2.jpg";
-import slide3 from "../../assets/slide3.jpg";
-import slide4 from "../../assets/slide4.jpg";
-import slide5 from "../../assets/slide5.jpg";
-import promoImg1 from "../../assets/bannerimg1.jpg";
-import promoImg2 from "../../assets/bannerimg2.jpg";
-import promoImg3 from "../../assets/bannerimg3.jpg";
-import promoImg4 from "../../assets/bannerimg4.jpg";
-import promoImg5 from "../../assets/heroimg1.jpg";
-import promoImg6 from "../../assets/heroimg2.jpg";
-import promoImg7 from "../../assets/heroimg3.jpg";
-import promoImg8 from "../../assets/heroimg4.jpg";
-import promoImg9 from "../../assets/heroimg5.jpg";
-import promoImg10 from "../../assets/heroimg6.jpg";
 import SideBar from "./sidebar/SideBar";
 
 const brands = [
   {
     name: "OLAPLEX",
     description: "Сила профессионального ухода для безупречных волос",
-    image: slide1,
+    image: "/images/slide1.jpg",
   },
   {
     name: "MAREVE",
     description: "Скидка 20% на набор",
-    image: slide2,
+    image: "/images/slide2.jpg",
   },
   {
     name: "NaturalME",
     description:
       "При покупке любого продукта NaturalME - крем Derma в подарок!",
-    image: slide3,
+    image: "/images/slide3.jpg",
   },
   {
     name: "Paloma",
     description: "При покупке двух товаров Paloma Cosmetics третий в подарок",
-    image: slide4,
+    image: "/images/slide4.jpg",
   },
   {
     name: "tanita",
     description: "При покупке двух товаров марки tanita третий в подарок!",
-    image: slide5,
+    image: "/images/slide5.jpg",
   },
 ];
 
@@ -129,28 +114,12 @@ const Promo = () => {
         <div className="grid grid-cols-2 gap-5">
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg1}
+            src="/images/bannerimg1.jpg"
             alt="promoImg"
           />
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg2}
-            alt="promoImg"
-          />
-        </div>
-      </div>
-
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg3}
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg4}
+            src="/images/bannerimg2.jpg"
             alt="promoImg"
           />
         </div>
@@ -161,28 +130,12 @@ const Promo = () => {
         <div className="grid grid-cols-2 gap-5">
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg5}
+            src="/images/bannerimg3.jpg"
             alt="promoImg"
           />
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg6}
-            alt="promoImg"
-          />
-        </div>
-      </div>
-
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg7}
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg8}
+            src="/images/bannerimg4.jpg"
             alt="promoImg"
           />
         </div>
@@ -193,12 +146,44 @@ const Promo = () => {
         <div className="grid grid-cols-2 gap-5">
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg9}
+            src="/images/heroimg1.jpg"
             alt="promoImg"
           />
           <img
             className="rounded-lg transform duration-300 hover:scale-105"
-            src={promoImg10}
+            src="/images/heroimg2.jpg"
+            alt="promoImg"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-5">
+        <div className="mr-60"></div>
+        <div className="grid grid-cols-2 gap-5">
+          <img
+            className="rounded-lg transform duration-300 hover:scale-105"
+            src="/images/heroimg3.jpg"
+            alt="promoImg"
+          />
+          <img
+            className="rounded-lg transform duration-300 hover:scale-105"
+            src="/images/heroimg4.jpg"
+            alt="promoImg"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-5">
+        <div className="mr-60"></div>
+        <div className="grid grid-cols-2 gap-5">
+          <img
+            className="rounded-lg transform duration-300 hover:scale-105"
+            src="/images/heroimg5.jpg"
+            alt="promoImg"
+          />
+          <img
+            className="rounded-lg transform duration-300 hover:scale-105"
+            src="/images/heroimg6.jpg"
             alt="promoImg"
           />
         </div>

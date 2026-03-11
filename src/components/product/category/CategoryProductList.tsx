@@ -1,38 +1,22 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import categoryImgList1 from "../../../assets/categoryimglist1.jpg";
-import categoryImgList2 from "../../../assets/categoryimglist2.jpg";
-import categoryImgList3 from "../../../assets/categoryimglist3.jpg";
-import categoryImgList4 from "../../../assets/categoryimglist4.jpg";
-import categoryImgList5 from "../../../assets/categoryimglist5.jpg";
-import categoryImgList6 from "../../../assets/categoryimglist6.jpg";
-import categoryImgList7 from "../../../assets/categoryimglist7.jpg";
-import categoryImgList8 from "../../../assets/categoryimglist8.jpg";
-import carouselvideo1 from "../../../assets/video/carouselvideo1.mp4";
-import carouselvideo2 from "../../../assets/video/carouselvideo2.mp4";
-import carouselvideo3 from "../../../assets/video/carouselvideo3.mp4";
-import carouselvideo4 from "../../../assets/video/carouselvideo4.webm";
-import carouselvideo5 from "../../../assets/video/carouselvideo5.webm";
-import carouselvideo6 from "../../../assets/video/carouselvideo6.mp4";
-import carouselvideo7 from "../../../assets/video/carouselvideo7.mp4";
-import carouselvideo8 from "../../../assets/video/carouselvideo8.mp4";
 
 const categories = [
-  { name: "Rexaline", image: categoryImgList4, video: carouselvideo1 },
-  { name: "Lalique", image: categoryImgList5, video: carouselvideo2 },
-  { name: "Filorga", image: categoryImgList6, video: carouselvideo3 },
-  { name: "Lovely", image: categoryImgList2, video: carouselvideo4 },
+  { name: "Rexaline", image: "/images/categoryimglist4.jpg", video: "/video/carouselvideo1.mp4" },
+  { name: "Lalique", image: "/images/categoryimglist5.jpg", video: "/video/carouselvideo2.mp4" },
+  { name: "Filorga", image: "/images/categoryimglist6.jpg", video: "/video/carouselvideo3.mp4" },
+  { name: "Lovely", image: "/images/categoryimglist2.jpg", video: "/video/carouselvideo4.webm" },
   {
     name: "ARI ANWA Skin",
-    image: categoryImgList3,
-    video: carouselvideo6,
+    image: "/images/categoryimglist3.jpg",
+    video: "/video/carouselvideo6.mp4",
   },
-  { name: "Vipera", image: categoryImgList7, video: carouselvideo5 },
-  { name: "Bentley", image: categoryImgList1, video: carouselvideo7 },
+  { name: "Vipera", image: "/images/categoryimglist7.jpg", video: "/video/carouselvideo5.webm" },
+  { name: "Bentley", image: "/images/categoryimglist1.jpg", video: "/video/carouselvideo7.mp4" },
   {
     name: "Faconnable",
-    image: categoryImgList8,
-    video: carouselvideo8,
+    image: "/images/categoryimglist8.jpg",
+    video: "/video/carouselvideo8.mp4",
   },
 ];
 

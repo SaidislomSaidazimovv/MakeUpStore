@@ -5,32 +5,6 @@ import ImageCarousel from "../carousel/Carousel";
 import CategoryCarousel from "./category/CategoryProductList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import mainImg1 from "../../assets/mainImg1.jpg";
-import mainImg2 from "../../assets/mainImg2.jpg";
-import mainImg5 from "../../assets/mainimg5.jpg";
-import mainImg6 from "../../assets/mainimg6.jpg";
-import mainImg3 from "../../assets/mainimg3.jpg";
-import mainImg4 from "../../assets/mainimg4.jpg";
-import mainImg7 from "../../assets/mainimg7.jpg";
-import mainImg8 from "../../assets/mainimg8.jpg";
-import mainImg9 from "../../assets/mainimg-9.jpg";
-import mainImg10 from "../../assets/mainimg-10.jpg";
-import mainImg11 from "../../assets/mainimg11.jpg";
-import mainImg12 from "../../assets/mainimg12.jpg";
-import heroImg1 from "../../assets/heroimg1.jpg";
-import heroImg2 from "../../assets/heroimg2.jpg";
-import heroImg3 from "../../assets/heroimg3.jpg";
-import heroImg4 from "../../assets/heroimg4.jpg";
-import heroImg5 from "../../assets/heroimg5.jpg";
-import heroImg6 from "../../assets/heroimg6.jpg";
-import seperateImg1 from "../../assets/seperateimg1.jpg";
-import seperateImg2 from "../../assets/seperateimg2.jpg";
-import seperateImg3 from "../../assets/seperateimg3.jpg";
-import seperateImg4 from "../../assets/seperateimg4.jpg";
-import bannerImg1 from "../../assets/bannerimg1.jpg";
-import bannerImg2 from "../../assets/bannerimg2.jpg";
-import bannerImg3 from "../../assets/bannerimg3.jpg";
-import bannerImg4 from "../../assets/bannerimg4.jpg";
 
 const ProductList: React.FC = () => {
   const [category] = useState<string | null>(null);
@@ -91,7 +65,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[130px]" src={mainImg1} alt="mainImg" />
+          <img className="mr-20 w-[130px]" src="/images/mainImg1.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Помада супер , у меня почти все цвета, пользуюсь много лет,после
@@ -102,7 +76,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src={mainImg2} alt="mainImg" />
+          <img className="mr-20 w-[90px]" src="/images/mainImg2.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Помада супер , у меня почти все цвета, пользуюсь много лет,после
@@ -135,14 +109,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={mainImg5}
+            src="/images/mainimg5.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={mainImg6}
+            src="/images/mainimg6.jpg"
             alt="mainImg"
           />
         </div>
@@ -150,7 +124,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[120px]" src={mainImg3} alt="mainImg" />
+          <img className="mr-20 w-[120px]" src="/images/mainimg3.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               мои любимые духи, сначала очень странные но потом классно
@@ -161,7 +135,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[80px]" src={mainImg4} alt="mainImg" />
+          <img className="mr-20 w-[80px]" src="/images/mainimg4.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               мои любимые духи, сначала очень странные но потом классно
@@ -194,14 +168,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg5}
+            src="/images/heroimg5.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg6}
+            src="/images/heroimg6.jpg"
             alt="mainImg"
           />
         </div>
@@ -209,7 +183,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[70px]" src={mainImg9} alt="mainImg" />
+          <img className="mr-20 w-[70px]" src="/images/mainimg-9.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Тушь замечательная. Наносить такой кисточкой легко и приятно)
@@ -220,7 +194,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[45px]" src={mainImg10} alt="mainImg" />
+          <img className="mr-20 w-[45px]" src="/images/mainimg-10.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Тушь замечательная. Наносить такой кисточкой легко и приятно)
@@ -253,14 +227,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg3}
+            src="/images/heroimg3.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg4}
+            src="/images/heroimg4.jpg"
             alt="mainImg"
           />
         </div>
@@ -268,7 +242,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[185px]" src={mainImg7} alt="mainImg" />
+          <img className="mr-20 w-[185px]" src="/images/mainimg7.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Шампунь гарний. Задоволена. Беру вже не перший раз.
@@ -277,7 +251,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[105px]" src={mainImg8} alt="mainImg" />
+          <img className="mr-20 w-[105px]" src="/images/mainimg8.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Я покупала не здесь, но хотела бы поделиться отзывом. Очень
@@ -311,14 +285,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg2}
+            src="/images/heroimg2.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={heroImg1}
+            src="/images/heroimg1.jpg"
             alt="mainImg"
           />
         </div>
@@ -326,7 +300,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src={mainImg11} alt="mainImg" />
+          <img className="mr-20 w-[90px]" src="/images/mainimg11.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не
@@ -337,7 +311,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[175px]" src={mainImg12} alt="mainImg" />
+          <img className="mr-20 w-[175px]" src="/images/mainimg12.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не
@@ -370,14 +344,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={bannerImg4}
+            src="/images/bannerimg4.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={bannerImg2}
+            src="/images/bannerimg2.jpg"
             alt="mainImg"
           />
         </div>
@@ -385,7 +359,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src={seperateImg1} alt="mainImg" />
+          <img className="mr-20 w-[90px]" src="/images/seperateimg1.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не
@@ -396,7 +370,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[175px]" src={seperateImg2} alt="mainImg" />
+          <img className="mr-20 w-[175px]" src="/images/seperateimg2.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не
@@ -429,14 +403,14 @@ const ProductList: React.FC = () => {
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={bannerImg3}
+            src="/images/bannerimg3.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
             className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-            src={bannerImg1}
+            src="/images/bannerimg1.jpg"
             alt="mainImg"
           />
         </div>
@@ -444,7 +418,7 @@ const ProductList: React.FC = () => {
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
-          <img className="mr-20 w-[125px]" src={seperateImg3} alt="mainImg" />
+          <img className="mr-20 w-[125px]" src="/images/seperateimg3.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не
@@ -455,7 +429,7 @@ const ProductList: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[140px]" src={seperateImg4} alt="mainImg" />
+          <img className="mr-20 w-[140px]" src="/images/seperateimg4.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
               Крем приятный по структуре,запах неплохой,пока результата не

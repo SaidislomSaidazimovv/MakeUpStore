@@ -1,8 +1,3 @@
-import Img1 from "../../assets/1.png";
-import Img2 from "../../assets/2.png";
-import Img3 from "../../assets/3.png";
-import Img4 from "../../assets/4.png";
-
 const BeautyClub = () => {
   return (
     <div>
@@ -39,7 +34,7 @@ const BeautyClub = () => {
         </div>
         <div className="max-w-md -mt-16">
           <img
-            src={Img1}
+            src="/images/1.png"
             alt="Beauty illustration"
             className="w-full object-cover"
           />
@@ -48,7 +43,7 @@ const BeautyClub = () => {
       <div className="flex justify-center mt-10 items-center py-12 px-6 bg-white">
         <div className="max-w-md -mt-16">
           <img
-            src={Img2}
+            src="/images/2.png"
             alt="Beauty illustration"
             className="w-full object-cover"
           />
@@ -102,7 +97,7 @@ const BeautyClub = () => {
       <div className="flex justify-center mt-10 items-center py-12 px-6 bg-white">
         <div className="max-w-md">
           <img
-            src={Img3}
+            src="/images/3.png"
             alt="Beauty illustration"
             className="w-full object-cover"
           />
@@ -162,7 +157,7 @@ const BeautyClub = () => {
         </div>
         <div className="max-w-md">
           <img
-            src={Img4}
+            src="/images/4.png"
             alt="Beauty illustration"
             className="w-full object-cover"
           />
