@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/index";
 import { formatPrice } from "../../utils/formatPrice";
 import { motion } from "framer-motion";
 import { Search as SearchIcon, X } from "lucide-react";
-import axios from "axios";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -27,14 +24,17 @@ interface Product {
   product_colors: { hex_value: string; colour_name: string }[];
 }
 
-const POPULAR_TAGS = ["Lipstick", "Foundation", "Mascara", "Blush", "Eyeliner"];
+const POPULAR_TAGS = ["Lipstick", "Foundation", "Mascara", "Blush", "Eyeshadow"];
+
+const FALLBACK_CATEGORIES = ["blush", "bronzer", "eyeshadow", "foundation", "lipstick", "mascara"];
 
 const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [productType, setProductType] = useState("lipstick");
-  const [category, setCategory] = useState("all");
-  const [isLoading, setIsLoading] = useState(false);
+  const [productTag, setProductTag] = useState("all");
+  const [allResults, setAllResults] = useState<Product[]>([]);
   const [results, setResults] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,17 +48,6 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (!searchTerm.trim()) {
-      setResults([]);
-      return;
-    }
-    const timer = setTimeout(() => {
-      handleSearch();
-    }, 400);
-    return () => clearTimeout(timer);
-  }, [searchTerm, productType, category]);
-
-  useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -68,31 +57,74 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
     return () => document.removeEventListener("keydown", handleEsc);
   }, [isOpen, onClose]);
 
-  const handleSearch = async () => {
-    setIsLoading(true);
+  const fetchByProductType = useCallback(async (type: string) => {
+    setLoading(true);
     setError("");
     try {
-      const response = await axios.get(
-        `${BASE_URL}products.json?brand=${encodeURIComponent(
-          searchTerm
-        )}&product_type=${encodeURIComponent(productType)}${
-          category !== "all" ? `&category=${encodeURIComponent(category)}` : ""
-        }`
-      );
-      setResults(response.data);
+      const url = `${import.meta.env.VITE_BASE_URL}products.json?product_type=${type}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("API error");
+      const data: Product[] = await response.json();
+      setAllResults(data);
+      setResults(data.slice(0, 20));
     } catch {
-      setError("An error occurred while searching. Please try again.");
+      setError("Search unavailable. Please try again later.");
+      setAllResults([]);
       setResults([]);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
-  };
+  }, []);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
+  const applyFilters = useCallback((
+    all: Product[],
+    term: string,
+    tag: string
+  ) => {
+    let filtered = [...all];
+
+    if (term.trim()) {
+      const lower = term.toLowerCase();
+      filtered = filtered.filter(p =>
+        p.name?.toLowerCase().includes(lower) ||
+        p.brand?.toLowerCase().includes(lower)
+      );
     }
-  };
+
+    if (tag && tag !== "all") {
+      filtered = filtered.filter(p =>
+        p.tag_list?.some((t: string) => t.toLowerCase().includes(tag.toLowerCase()))
+      );
+    }
+
+    setResults(filtered.slice(0, 20));
+  }, []);
+
+  // Fetch when modal opens or product_type changes
+  useEffect(() => {
+    if (isOpen) {
+      fetchByProductType(productType);
+    }
+  }, [isOpen, productType, fetchByProductType]);
+
+  // Filter client-side when searchTerm or productTag changes (debounced)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      applyFilters(allResults, searchTerm, productTag);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchTerm, productTag, allResults, applyFilters]);
+
+  // Reset state when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchTerm("");
+      setProductTag("all");
+      setAllResults([]);
+      setResults([]);
+      setError("");
+    }
+  }, [isOpen]);
 
   const handleResultClick = (product: Product) => {
     navigate(`/product/${product.id}`);
@@ -106,11 +138,13 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
   };
 
   const handleTagClick = (tag: string) => {
-    setSearchTerm(tag);
     setProductType(tag.toLowerCase());
+    setSearchTerm("");
   };
 
   if (!isOpen) return null;
+
+  const showResults = !loading && !error && (results.length > 0 || searchTerm.trim() || productTag !== "all");
 
   return (
     <motion.div
@@ -136,11 +170,10 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
             <input
               ref={inputRef}
               type="text"
-              placeholder="Search for lipstick, foundation, mascara..."
+              placeholder="Search by name or brand..."
               className="flex-grow bg-transparent outline-none text-lg border-b-2 border-rose-300 focus:border-rose-500 py-2 placeholder:text-rose-300 text-gray-800 transition-colors"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleKeyDown}
             />
             <select
               value={productType}
@@ -150,16 +183,24 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
               <option value="lipstick">Lipstick</option>
               <option value="foundation">Foundation</option>
               <option value="eyeliner">Eyeliner</option>
+              <option value="eyeshadow">Eyeshadow</option>
+              <option value="blush">Blush</option>
+              <option value="bronzer">Bronzer</option>
+              <option value="mascara">Mascara</option>
+              <option value="nail_polish">Nail Polish</option>
+              <option value="lip_liner">Lip Liner</option>
             </select>
             <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              value={productTag}
+              onChange={(e) => setProductTag(e.target.value)}
               className="border border-rose-200 rounded-full bg-rose-50 text-rose-700 text-sm font-medium px-4 py-2 outline-none focus:border-rose-400 hover:bg-rose-100 transition cursor-pointer"
             >
-              <option value="all">All Categories</option>
+              <option value="all">All Tags</option>
               <option value="organic">Organic</option>
               <option value="vegan">Vegan</option>
               <option value="natural">Natural</option>
+              <option value="gluten free">Gluten Free</option>
+              <option value="canadian">Canadian</option>
             </select>
             <motion.button
               onClick={onClose}
@@ -171,7 +212,7 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
             </motion.button>
           </div>
 
-          {!searchTerm.trim() && !isLoading && results.length === 0 && (
+          {!searchTerm.trim() && !loading && allResults.length === 0 && !error && (
             <div className="flex items-center mt-4 pt-3 border-t border-rose-100">
               <span className="text-rose-400 text-xs mr-2">Popular:</span>
               <div className="flex gap-2 flex-wrap">
@@ -188,9 +229,9 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
 
-          {(isLoading || error || (searchTerm.trim() && (results.length > 0 || !isLoading))) && (
+          {(loading || error || showResults) && (
             <div className="border-t border-rose-100 mt-3 pt-3">
-              {isLoading ? (
+              {loading ? (
                 <div className="space-y-2">
                   {[...Array(3)].map((_, i) => (
                     <div
@@ -200,42 +241,63 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
                   ))}
                 </div>
               ) : error ? (
-                <div className="text-center text-rose-500 text-sm py-6">
-                  {error}
+                <div className="text-center py-6">
+                  <p className="text-rose-400 text-sm">{error}</p>
+                  <p className="text-gray-400 text-xs mt-1">Try browsing by category instead</p>
+                  <div className="flex justify-center gap-2 mt-3 flex-wrap">
+                    {FALLBACK_CATEGORIES.map((cat) => (
+                      <Link
+                        key={cat}
+                        to={`/category/${cat}`}
+                        onClick={onClose}
+                        className="bg-rose-50 text-rose-500 text-xs px-3 py-1 rounded-full border border-rose-200 hover:bg-rose-100 transition"
+                      >
+                        {cat}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : results.length > 0 ? (
-                <ul className="max-h-72 overflow-y-auto">
-                  {results.map((product) => (
-                    <li
-                      key={product.id}
-                      className="flex items-center gap-3 py-2 px-3 hover:bg-rose-50 rounded-lg cursor-pointer transition"
-                      onClick={() => handleResultClick(product)}
-                    >
-                      <img
-                        src={product.image_link}
-                        alt={product.name}
-                        className="w-10 h-10 rounded-md object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src =
-                            "/images/placeholder.jpg";
-                        }}
-                      />
-                      <div className="flex-grow min-w-0">
-                        <p className="text-sm font-medium text-gray-800 truncate">
-                          {product.name}
-                        </p>
-                        <p className="text-xs text-rose-400">{product.brand}</p>
-                      </div>
-                      <span className="text-sm text-rose-600 font-semibold shrink-0">
-                        {formatPrice(product.price, currency)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <p className="text-xs text-rose-400 px-3 mb-2">
+                    {results.length} products found
+                    {searchTerm && ` for "${searchTerm}"`}
+                    {` in ${productType}`}
+                  </p>
+                  <ul className="max-h-72 overflow-y-auto">
+                    {results.map((product) => (
+                      <li
+                        key={product.id}
+                        className="flex items-center gap-3 py-2 px-3 hover:bg-rose-50 rounded-lg cursor-pointer transition"
+                        onClick={() => handleResultClick(product)}
+                      >
+                        <img
+                          src={product.image_link}
+                          alt={product.name}
+                          className="w-10 h-10 rounded-md object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src =
+                              "/images/placeholder.jpg";
+                          }}
+                        />
+                        <div className="flex-grow min-w-0">
+                          <p className="text-sm font-medium text-gray-800 truncate">
+                            {product.name}
+                          </p>
+                          <p className="text-xs text-rose-400">{product.brand}</p>
+                        </div>
+                        <span className="text-sm text-rose-600 font-semibold shrink-0">
+                          {formatPrice(product.price, currency)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
               ) : (
-                <p className="text-rose-400 text-sm py-6 text-center">
-                  No products found
-                </p>
+                <div className="text-center py-6">
+                  <p className="text-rose-400 text-sm">No products match &quot;{searchTerm}&quot;</p>
+                  <p className="text-gray-400 text-xs mt-1">Try a different name or clear the search</p>
+                </div>
               )}
             </div>
           )}
