@@ -54,13 +54,16 @@ const CategoryProductList: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={handleClose}
           >
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.5, opacity: 0 }}
-              className="bg-white rounded-lg p-6 max-w-lg w-full relative"
+              className="bg-white rounded-2xl p-4 relative mx-4"
+              style={{ width: "100%", maxWidth: "480px" }}
+              onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={handleClose}
@@ -78,9 +81,9 @@ const CategoryProductList: React.FC = () => {
                   <video
                     autoPlay
                     muted
-                    className="w-full rounded-lg shadow-lg"
-                    onEnded={() => handleClose()}
                     controls
+                    onEnded={handleClose}
+                    style={{ width: "100%", maxHeight: "320px", borderRadius: "8px", objectFit: "cover" }}
                   >
                     <source src={selected?.video} type={selected?.type} />
                     Your browser does not support the video tag.
