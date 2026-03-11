@@ -74,6 +74,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               isLoading ? "opacity-0" : "opacity-100"
             }`}
             onLoad={handleImageLoad}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/images/placeholder.jpg";
+            }}
           />
         </Link>
 

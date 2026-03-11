@@ -73,6 +73,9 @@ const SingleProduct: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = "/images/placeholder.jpg";
+            }}
           />
           <div className="flex space-x-2 mt-4">
             {thumbnails.map((thumb, index) => (
@@ -83,6 +86,9 @@ const SingleProduct: React.FC = () => {
                 className="w-20 h-20 object-cover rounded cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all duration-200"
                 onClick={() => setMainImage(thumb)}
                 whileHover={{ scale: 1.05 }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "/images/placeholder.jpg";
+                }}
               />
             ))}
           </div>
