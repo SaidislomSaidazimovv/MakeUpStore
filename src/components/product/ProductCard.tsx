@@ -85,14 +85,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Link>
 
         {isHovered && (
-          <button
+          <motion.button
             onClick={handleToggleFavorite}
             className={`absolute top-2 right-2 p-2 rounded-full ${
               isLike ? "bg-red-500 text-white" : "bg-white text-gray-700"
-            } shadow-md transition-all duration-200 transform hover:scale-110`}
+            } shadow-md`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Heart size={20} />
-          </button>
+          </motion.button>
         )}
 
         <div className="px-4 py-6">
@@ -152,7 +154,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             )}
           </div>
 
-          <button
+          <motion.button
             onClick={handleAddToCart}
             disabled={isInCart || !selectedOption}
             className={`w-full py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center space-x-2 ${
@@ -160,6 +162,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-700"
             }`}
+            whileHover={!isInCart && selectedOption ? { scale: 1.03 } : {}}
+            whileTap={!isInCart && selectedOption ? { scale: 0.97 } : {}}
           >
             <ShoppingCart size={20} />
             <span>
@@ -167,7 +171,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 ? "In Cart"
                 : `Add to Cart${selectedOption ? ` - ${selectedOption}` : ""}`}
             </span>
-          </button>
+          </motion.button>
         </div>
       </motion.div>
   );
