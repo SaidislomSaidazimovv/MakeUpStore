@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
@@ -14,12 +14,17 @@ const categories = [
 
 const CategoryProductList: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleCategoryClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
   };
 
   const handleClose = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
     setSelectedCategory(null);
   };
 
@@ -54,7 +59,8 @@ const CategoryProductList: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            style={{ position: "fixed" }}
             onClick={handleClose}
           >
             <motion.div
@@ -79,11 +85,12 @@ const CategoryProductList: React.FC = () => {
                 const selected = categories.find((c) => c.name === selectedCategory);
                 return (
                   <video
+                    ref={videoRef}
                     autoPlay
                     muted
                     controls
                     onEnded={handleClose}
-                    style={{ width: "100%", maxHeight: "320px", borderRadius: "8px", objectFit: "cover" }}
+                    style={{ width: "100%", maxHeight: "320px", borderRadius: "8px" }}
                   >
                     <source src={selected?.video} type={selected?.type} />
                     Your browser does not support the video tag.
