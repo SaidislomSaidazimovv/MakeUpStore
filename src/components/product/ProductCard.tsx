@@ -56,6 +56,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         onMouseLeave={() => setIsHovered(false)}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
