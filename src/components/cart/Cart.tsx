@@ -10,6 +10,7 @@ import { Trash2, Minus, Plus, ShoppingCart } from "lucide-react";
 import { formatPrice } from "../../utils/formatPrice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PageTransition from "../PageTransition";
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const Cart: React.FC = () => {
   }
 
   return (
+    <PageTransition>
     <div className="bg-white rounded-lg shadow-md p-6">
       <ToastContainer />
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
@@ -105,6 +107,7 @@ const Cart: React.FC = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 };
 

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import PageTransition from "../../components/PageTransition";
 
 const NotFound = () => {
   return (
+    <PageTransition>
     <div className="flex flex-col items-center justify-center h-64">
       <h1 className="text-6xl font-bold text-gray-300 mb-4">404</h1>
       <p className="text-xl text-gray-600 mb-8">Page not found</p>
@@ -12,6 +14,7 @@ const NotFound = () => {
         Back to Homepage
       </Link>
     </div>
+    </PageTransition>
   );
 };
 

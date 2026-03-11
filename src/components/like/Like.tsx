@@ -7,6 +7,7 @@ import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/formatPrice";
 import "react-toastify/dist/ReactToastify.css";
+import PageTransition from "../PageTransition";
 
 const Like: React.FC = () => {
   const likes = useSelector((state: RootState) => state.likes.items);
@@ -28,6 +29,7 @@ const Like: React.FC = () => {
   }
 
   return (
+    <PageTransition>
     <>
       <ToastContainer />
       <div className="container mx-auto p-4">
@@ -67,6 +69,7 @@ const Like: React.FC = () => {
         </div>
       </div>
     </>
+    </PageTransition>
   );
 };
 

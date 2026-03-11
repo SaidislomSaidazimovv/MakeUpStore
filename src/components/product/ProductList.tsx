@@ -5,6 +5,7 @@ import ImageCarousel from "../carousel/Carousel";
 import CategoryCarousel from "./category/CategoryProductList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PageTransition from "../PageTransition";
 
 const ProductList: React.FC = () => {
   const [category] = useState<string | null>(null);
@@ -15,6 +16,7 @@ const ProductList: React.FC = () => {
     : products;
 
   return (
+    <PageTransition>
     <div className="container mx-auto p-4">
       <ToastContainer />
       <ImageCarousel />
@@ -441,6 +443,7 @@ const ProductList: React.FC = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 };
 

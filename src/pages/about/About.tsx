@@ -1,5 +1,8 @@
+import PageTransition from "../../components/PageTransition";
+
 const About = () => {
   return (
+    <PageTransition>
     <div className="flex flex-col items-center py-10 px-5 lg:px-32">
       <h1 className="text-3xl font-bold text-center mb-6 animate-fade-in">
         Красота без границ
@@ -214,6 +217,7 @@ const About = () => {
         </p>
       </div>
     </div>
+    </PageTransition>
   );
 };
 

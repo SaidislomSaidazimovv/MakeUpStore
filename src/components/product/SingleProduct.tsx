@@ -8,6 +8,7 @@ import { RootState } from "../../app/index";
 import { Heart, ShoppingCart, Truck } from "lucide-react";
 import { motion } from "framer-motion";
 import { formatPrice } from "../../utils/formatPrice";
+import PageTransition from "../PageTransition";
 
 const SingleProduct: React.FC = () => {
   const { id } = useParams<{ id: string }>() as { id: string };
@@ -41,6 +42,7 @@ const SingleProduct: React.FC = () => {
   ];
 
   return (
+    <PageTransition>
     <div className="bg-white max-w-7xl mx-auto p-6">
       <nav className="text-sm breadcrumbs mb-4">
         <ul className="flex space-x-2">
@@ -176,6 +178,7 @@ const SingleProduct: React.FC = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 };
 

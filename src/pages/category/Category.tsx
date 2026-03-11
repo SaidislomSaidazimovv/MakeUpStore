@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { MdExpandMore } from "react-icons/md";
 import { MdOutlineExpandLess } from "react-icons/md";
 import Sidebar from "../promo/sidebar/SideBar";
+import PageTransition from "../../components/PageTransition";
 
 const Category: React.FC = () => {
   const { category } = useParams<{ category: string }>();
@@ -31,6 +32,7 @@ const Category: React.FC = () => {
   }
 
   return (
+    <PageTransition>
     <div className="flex container mx-auto p-4">
       <Sidebar />
       <div className="flex-1 ml-4">
@@ -66,6 +68,7 @@ const Category: React.FC = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 };
 
