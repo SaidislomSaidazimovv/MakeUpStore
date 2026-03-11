@@ -10,6 +10,8 @@ import { TfiSearch } from "react-icons/tfi";
 import { CiUser } from "react-icons/ci";
 import { BsHandbag } from "react-icons/bs";
 import headerLogo from "../../assets/headerlogo.svg";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import "./Header.css";
 
 const Header: React.FC = () => {
@@ -56,12 +58,14 @@ const Header: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8 flex justify-between items-center">
-        <button
+        <motion.button
           onClick={openSearchModal}
           className="text-gray-700 hover:text-gray-900 transition-colors duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <TfiSearch className="w-6 h-6" />
-        </button>
+        </motion.button>
 
         <Link to="/" className="text-3xl font-bold ml-60 text-black">
           <img className="header_logo" src={headerLogo} alt="headerlogo" />
@@ -111,7 +115,11 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <SearchModal isOpen={isSearchModalOpen} onClose={closeSearchModal} />
+      <AnimatePresence>
+        {isSearchModalOpen && (
+          <SearchModal isOpen={isSearchModalOpen} onClose={closeSearchModal} />
+        )}
+      </AnimatePresence>
 
       <div className="flex gap-32 justify-center">
         <Link to="/category/blush">
