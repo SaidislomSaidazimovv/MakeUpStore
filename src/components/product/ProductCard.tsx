@@ -8,12 +8,14 @@ import { RootState } from "../../app/index";
 import { Heart, ShoppingCart, ChevronDown } from "lucide-react";
 import { formatPrice } from "../../utils/formatPrice";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface ProductCardProps {
   product?: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -68,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
 
           <div className="absolute top-0 left-0 bg-black text-white px-2 py-1 text-sm font-semibold">
-            DEAL
+            {t("product.deal")}
           </div>
 
           <img
@@ -120,7 +122,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
           )}
           <p className="text-xl font-bold text-blue-600 mb-4">
-            {formatPrice(product.price, currency)}
+            {formatPrice(product.price, currency, t("product.noPrice"), t("product.currency"))}
           </p>
 
           <div className="relative mb-4">
@@ -128,7 +130,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               className="w-full px-4 py-2 text-left bg-gray-100 rounded-md flex justify-between items-center"
               onClick={() => setIsSelectOpen(!isSelectOpen)}
             >
-              {selectedOption || "Select an ml"}
+              {selectedOption || t("product.selectMl")}
               <ChevronDown
                 size={20}
                 className={`transform transition-transform ${
@@ -167,9 +169,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             <ShoppingCart size={20} />
             <span>
-              {isInCart
-                ? "In Cart"
-                : `Add to Cart${selectedOption ? ` - ${selectedOption}` : ""}`}
+              {isInCart ? t("product.inCart") : `${t("product.addToCart")}${selectedOption ? ` - ${selectedOption}` : ""}`}
             </span>
           </motion.button>
         </div>

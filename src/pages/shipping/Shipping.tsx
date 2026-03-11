@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const Shipping = () => {
+  const { t } = useTranslation();
   const [city, setCity] = useState("");
 
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,11 +16,10 @@ const Shipping = () => {
   return (
     <div className="flex flex-col items-center py-10">
       <h2 className="text-xl font-semibold mb-4">
-        Доставляем счастье. Бесплатно.
+        {t("shipping.title")}
       </h2>
       <p className="text-center mb-6">
-        Введите название вашего населенного пункта, и мы предложим варианты
-        доставки
+        {t("shipping.subtitle")}
       </p>
 
       <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 shadow-md">
@@ -26,7 +27,7 @@ const Shipping = () => {
           type="text"
           value={city}
           onChange={handleCityChange}
-          placeholder="Введите ваш город"
+          placeholder={t("shipping.cityPlaceholder")}
           className="bg-transparent outline-none w-64 p-2"
         />
         <button
@@ -38,19 +39,17 @@ const Shipping = () => {
       </div>
 
       <div className="mt-10">
-        <h3 className="text-lg font-semibold">1 вариант доставки</h3>
+        <h3 className="text-lg font-semibold">{t("shipping.deliveryOption")}</h3>
         <div className="flex items-start bg-white border rounded-lg shadow-lg p-4 mt-4 w-full max-w-md">
           <div className="mr-4 text-purple-500">
             <AiOutlineSearch size={32} />
           </div>
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">
-              Доставка курьером
+              {t("shipping.courierDelivery")}
             </h4>
             <p className="text-sm text-gray-600">
-              Бесплатная доставка курьером, минимальная сумма заказа — 99 000
-              сумов. Заказ будет отправлен из ЕС. Доставка осуществляется в
-              течение 8-11 раб. дней.
+              {t("shipping.courierDetails")}
             </p>
           </div>
         </div>

@@ -7,8 +7,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PageTransition from "../PageTransition";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const ProductList: React.FC = () => {
+  const { t } = useTranslation();
   const [category] = useState<string | null>(null);
   const { data: products, isLoading, error } = useGetProductsQuery();
 
@@ -45,7 +47,7 @@ const ProductList: React.FC = () => {
 
       {error && (
         <div className="text-red-500 text-center py-4">
-          <p>Error occurred while fetching products.</p>
+          <p>{t("home.errorFetch")}</p>
         </div>
       )}
 
@@ -55,7 +57,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center justify-center font-semibold text-3xl mt-10 mb-16">
-        Предложения брендов
+        {t("home.brandOffers")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -74,22 +76,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[130px]" src="/images/mainImg1.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Помада супер , у меня почти все цвета, пользуюсь много лет,после
-              нее не могу пользоваться другими,реально зе бест)Супер
-              стойкая,супер насыщенная и не сушит губы как некоторые аналоги....
+              {t("home.reviewLipstick")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[90px]" src="/images/mainImg2.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Помада супер , у меня почти все цвета, пользуюсь много лет,после
-              нее не могу пользоваться другими,реально зе бест)Супер
-              стойкая,супер насыщенная и не сушит губы как некоторые аналоги....
+              {t("home.reviewLipstick")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -100,7 +98,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center justify-center font-semibold text-3xl mb-16 mt-10">
-        Парфюмерия
+        {t("home.perfumery")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -142,22 +140,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[120px]" src="/images/mainimg3.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              мои любимые духи, сначала очень странные но потом классно
-              раскрываются, прикольные)) многие говорят, что похоже на мыло, я
-              люблю такие запахи...
+              {t("home.reviewPerfume")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[80px]" src="/images/mainimg4.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              мои любимые духи, сначала очень странные но потом классно
-              раскрываются, прикольные)) многие говорят, что похоже на мыло, я
-              люблю такие запахи...
+              {t("home.reviewPerfume")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -168,7 +162,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-        Макияж
+        {t("home.makeup")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -210,22 +204,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[70px]" src="/images/mainimg-9.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Тушь замечательная. Наносить такой кисточкой легко и приятно)
-              Держится на ресницах тушь уверенно, смывается мицеллярной водой
-              легко 😊...
+              {t("home.reviewMascara")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[45px]" src="/images/mainimg-10.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Тушь замечательная. Наносить такой кисточкой легко и приятно)
-              Держится на ресницах тушь уверенно, смывается мицеллярной водой
-              легко 😊...
+              {t("home.reviewMascara")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -236,7 +226,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-        Волосы
+        {t("home.hair")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -278,21 +268,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[185px]" src="/images/mainimg7.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Шампунь гарний. Задоволена. Беру вже не перший раз.
+              {t("home.reviewShampoo1")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[105px]" src="/images/mainimg8.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Я покупала не здесь, но хотела бы поделиться отзывом. Очень
-              понравился шампунь и бальзам из серии. У меня густые, длинные,
-              окрашенные волосы. Подошёл идеально и запах очень приятный и
-              свежий. Расход в...
+              {t("home.reviewShampoo2")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -303,7 +290,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-        Лицо
+        {t("home.face")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -345,22 +332,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[90px]" src="/images/mainimg11.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[175px]" src="/images/mainimg12.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -371,7 +354,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center mt-10 justify-center font-semibold text-3xl mb-10">
-        Тело и ванна
+        {t("home.bodyBath")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -413,22 +396,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[90px]" src="/images/seperateimg1.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[175px]" src="/images/seperateimg2.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>
@@ -439,7 +418,7 @@ const ProductList: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-        Мужчинам
+        {t("home.forMen")}
       </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -481,22 +460,18 @@ const ProductList: React.FC = () => {
           <img className="mr-20 w-[125px]" src="/images/seperateimg3.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Анна</p>
+            <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
           <img className="mr-20 w-[140px]" src="/images/seperateimg4.jpg" alt="mainImg" />
           <div>
             <p className="text-xl font-semibold w-80">
-              Крем приятный по структуре,запах неплохой,пока результата не
-              увидела,,,,работа по доставке отличная,спасибо за скорость, всё
-              прибыло супербыстро!...
+              {t("home.reviewCream")}
             </p>
-            <p className="mt-4">Милена</p>
+            <p className="mt-4">{t("home.reviewerMilena")}</p>
           </div>
         </div>
       </div>

@@ -9,8 +9,10 @@ import { Heart, ShoppingCart, Truck } from "lucide-react";
 import { motion } from "framer-motion";
 import { formatPrice } from "../../utils/formatPrice";
 import PageTransition from "../PageTransition";
+import { useTranslation } from "react-i18next";
 
 const SingleProduct: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>() as { id: string };
   const { data: product, isLoading, error } = useGetProductByIdQuery(id);
   const dispatch = useDispatch();
@@ -30,9 +32,9 @@ const SingleProduct: React.FC = () => {
     }
   };
 
-  if (isLoading) return <div className="animate-pulse">Loading...</div>;
-  if (error) return <div>Error occurred</div>;
-  if (!product) return <div>Product not found</div>;
+  if (isLoading) return <div className="animate-pulse">{t("product.loading")}</div>;
+  if (error) return <div>{t("product.error")}</div>;
+  if (!product) return <div>{t("product.notFound")}</div>;
 
   const thumbnails = [
     product.image_link,
@@ -56,7 +58,7 @@ const SingleProduct: React.FC = () => {
           </li>
           <li>
             <Link to="/perfume" className="text-gray-500 hover:text-gray-700">
-              Парфюмерия
+              {t("product.perfumery")}
             </Link>
           </li>
           <li>
@@ -98,7 +100,7 @@ const SingleProduct: React.FC = () => {
         <div>
           <div>
             <div className="bg-gray-100 text-xs font-semibold text-gray-700 px-2 py-1 rounded inline-block mb-2">
-              DEAL
+              {t("product.deal")}
             </div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
             <p className="text-xl text-gray-600 mb-2">{product.brand}</p>
@@ -121,13 +123,13 @@ const SingleProduct: React.FC = () => {
             )}
 
             <p className="text-3xl font-bold text-blue-600 mb-4">
-              {formatPrice(product.price, currency)}
+              {formatPrice(product.price, currency, t("product.noPrice"), t("product.currency"))}
             </p>
           </div>
 
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Объем:
+              {t("product.volume")}
             </label>
             <div className="flex space-x-2">
               {["50ml", "100ml", "200ml"].map((volume) => (
@@ -156,7 +158,7 @@ const SingleProduct: React.FC = () => {
               whileTap={{ scale: 0.95 }}
             >
               <ShoppingCart className="mr-2" size={20} />
-              Купить
+              {t("product.buy")}
             </motion.button>
             <motion.button
               onClick={handleToggleFavorite}
@@ -172,7 +174,7 @@ const SingleProduct: React.FC = () => {
 
           <div className="flex items-center text-green-600 mb-6">
             <Truck className="mr-2" size={20} />
-            <span>Бесплатная доставка</span>
+            <span>{t("product.freeDelivery")}</span>
           </div>
 
         </div>

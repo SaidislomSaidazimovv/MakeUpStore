@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../app/index";
 import {
@@ -13,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PageTransition from "../PageTransition";
 
 const Cart: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const currency = useSelector((state: RootState) => state.currency.selected);
@@ -38,7 +40,7 @@ const Cart: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center h-64">
         <ShoppingCart size={64} className="text-gray-400 mb-4" />
-        <p className="text-xl text-gray-600">Your cart is empty</p>
+        <p className="text-xl text-gray-600">{t("cart.empty")}</p>
       </div>
     );
   }
@@ -47,7 +49,7 @@ const Cart: React.FC = () => {
     <PageTransition>
     <div className="bg-white rounded-lg shadow-md p-6">
       <ToastContainer />
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+      <h1 className="text-3xl font-bold mb-6">{t("cart.title")}</h1>
       {cartItems.map((item) => (
         <div
           key={item.id}
@@ -84,7 +86,7 @@ const Cart: React.FC = () => {
               </button>
             </div>
             <p className="text-lg font-bold mr-4">
-              {formatPrice(parseFloat(item.price) * item.quantity, currency)}
+              {formatPrice(parseFloat(item.price) * item.quantity, currency, t("product.noPrice"), t("product.currency"))}
             </p>
             <button
               onClick={() => handleRemoveItem(item.id)}
@@ -100,10 +102,10 @@ const Cart: React.FC = () => {
           onClick={handleClearCart}
           className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
         >
-          Clear Cart
+          {t("cart.clear")}
         </button>
         <div className="text-2xl font-bold">
-          Total: {formatPrice(totalPrice, currency)}
+          {t("cart.total")} {formatPrice(totalPrice, currency, t("product.noPrice"), t("product.currency"))}
         </div>
       </div>
     </div>

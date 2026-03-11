@@ -1,39 +1,20 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SideBar from "./sidebar/SideBar";
 
-const brands = [
-  {
-    name: "OLAPLEX",
-    description: "Сила профессионального ухода для безупречных волос",
-    image: "/images/slide1.jpg",
-  },
-  {
-    name: "MAREVE",
-    description: "Скидка 20% на набор",
-    image: "/images/slide2.jpg",
-  },
-  {
-    name: "NaturalME",
-    description:
-      "При покупке любого продукта NaturalME - крем Derma в подарок!",
-    image: "/images/slide3.jpg",
-  },
-  {
-    name: "Paloma",
-    description: "При покупке двух товаров Paloma Cosmetics третий в подарок",
-    image: "/images/slide4.jpg",
-  },
-  {
-    name: "tanita",
-    description: "При покупке двух товаров марки tanita третий в подарок!",
-    image: "/images/slide5.jpg",
-  },
-];
-
 const Promo = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
+  const brands = [
+    { name: "OLAPLEX", description: t("promo.olaplex"), image: "/images/slide1.jpg" },
+    { name: "MAREVE", description: t("promo.mareve"), image: "/images/slide2.jpg" },
+    { name: "NaturalME", description: t("promo.naturalme"), image: "/images/slide3.jpg" },
+    { name: "Paloma", description: t("promo.paloma"), image: "/images/slide4.jpg" },
+    { name: "tanita", description: t("promo.tanita"), image: "/images/slide5.jpg" },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -63,7 +44,7 @@ const Promo = () => {
 
   return (
     <div className="max-w mx-auto p-4">
-      <h2 className="text-3xl font-bold text-center mb-8">Акции</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">{t("promo.title")}</h2>
       <div className="flex gap-5">
         <SideBar />
         <div className="relative overflow-hidden rounded-lg shadow-lg">
