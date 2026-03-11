@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
@@ -55,57 +56,53 @@ const CategoryProductList: React.FC = () => {
         </div>
       </div>
 
-      <AnimatePresence>
-        {selectedCategory && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center"
-            style={{ backgroundColor: "rgba(0,0,0,0.55)", zIndex: 9999 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={handleClose}
-          >
+      {createPortal(
+        <AnimatePresence>
+          {selectedCategory && (
             <motion.div
-              style={{
-                position: "relative",
-                width: "90%",
-                maxWidth: "480px",
-                backgroundColor: "white",
-                borderRadius: "16px",
-                padding: "24px",
-                zIndex: 10000,
-              }}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 flex items-center justify-center"
+              style={{ backgroundColor: "rgba(0,0,0,0.6)", zIndex: 9999 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleClose}
             >
-              <button
-                onClick={handleClose}
-                className="absolute top-3 right-3 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center font-bold text-sm"
+              <motion.div
+                className="bg-white rounded-2xl shadow-2xl relative"
+                style={{ width: "90%", maxWidth: "480px", padding: "24px" }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
               >
-                ✕
-              </button>
+                <button
+                  onClick={handleClose}
+                  className="absolute top-3 right-3 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center font-bold text-sm hover:bg-red-600 transition"
+                >
+                  ✕
+                </button>
 
-              <h2 className="text-xl font-bold mb-3">{selectedCategory}</h2>
+                <h2 className="text-xl font-bold mb-3">{selectedCategory}</h2>
 
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                controls
-                onEnded={handleClose}
-                style={{ width: "100%", maxHeight: "300px", borderRadius: "8px" }}
-              >
-                <source
-                  src={categories.find(c => c.name === selectedCategory)?.video}
-                  type={categories.find(c => c.name === selectedCategory)?.type}
-                />
-              </video>
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  controls
+                  onEnded={handleClose}
+                  style={{ width: "100%", maxHeight: "300px", borderRadius: "8px" }}
+                >
+                  <source
+                    src={categories.find(c => c.name === selectedCategory)?.video}
+                    type={categories.find(c => c.name === selectedCategory)?.type}
+                  />
+                </video>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 };
