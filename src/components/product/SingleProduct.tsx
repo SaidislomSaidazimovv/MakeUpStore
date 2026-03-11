@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
 import { addToLikes, removeFromLikes } from "../../features/likeSlice";
 import { RootState } from "../../app/index";
-import { Heart, ShoppingCart, Truck, ChevronDown } from "lucide-react";
+import { Heart, ShoppingCart, Truck } from "lucide-react";
 import { motion } from "framer-motion";
 import { formatPrice } from "../../utils/formatPrice";
 
@@ -173,47 +173,6 @@ const SingleProduct: React.FC = () => {
             <span>Бесплатная доставка</span>
           </div>
 
-          <div className="bg-purple-100 p-4 rounded-lg mb-6">
-            <h2 className="text-lg font-semibold mb-2 text-purple-800">
-              Акция
-            </h2>
-            <p className="text-sm text-purple-700">
-              Получите подарок при покупке парфюмерии Calvin Klein на сумму
-              свыше 558861 сум
-            </p>
-            <p className="text-sm text-purple-600 mt-2">
-              До конца акции осталось 12 дней 01:40:25
-            </p>
-          </div>
-
-          <div className="border-t border-gray-200 pt-6">
-            <motion.div
-              className="flex justify-between items-center cursor-pointer"
-              initial={false}
-              animate={{ backgroundColor: "#f3f4f6" }}
-              whileHover={{ backgroundColor: "#e5e7eb" }}
-            >
-              <h2 className="text-xl font-semibold">Характеристики</h2>
-              <ChevronDown size={20} />
-            </motion.div>
-            <div className="mt-4 text-sm text-gray-600">
-              <p>
-                <strong>Бренд:</strong> Calvin Klein
-              </p>
-              <p>
-                <strong>Серия:</strong> CK IN2U Her
-              </p>
-              <p>
-                <strong>Группа товара:</strong> туалетная вода
-              </p>
-              <p>
-                <strong>Классификация:</strong> элитная
-              </p>
-              <p>
-                <strong>Объем:</strong> 50ml, 100ml, 150ml, 200ml
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
