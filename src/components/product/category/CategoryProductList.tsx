@@ -56,47 +56,43 @@ const CategoryProductList: React.FC = () => {
       <AnimatePresence>
         {selectedCategory && (
           <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-            style={{ position: "fixed" }}
             onClick={handleClose}
           >
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
+              className="bg-white rounded-2xl shadow-2xl relative"
+              style={{ width: "90%", maxWidth: "480px", padding: "24px", zIndex: 51 }}
+              initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              className="bg-white rounded-2xl p-4 relative mx-4"
-              style={{ width: "100%", maxWidth: "480px" }}
+              exit={{ scale: 0.8, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-3 bg-red-600 text-white rounded-full px-2 transition-all duration-300 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300"
+                className="absolute top-3 right-3 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center font-bold text-sm"
               >
-                <span className="font-bold text-lg">X</span>
+                ✕
               </button>
 
-              <h2 className="text-2xl font-bold mb-4 -mt-3">
-                {selectedCategory}
-              </h2>
-              {(() => {
-                const selected = categories.find((c) => c.name === selectedCategory);
-                return (
-                  <video
-                    ref={videoRef}
-                    autoPlay
-                    muted
-                    controls
-                    onEnded={handleClose}
-                    style={{ width: "100%", maxHeight: "320px", borderRadius: "8px" }}
-                  >
-                    <source src={selected?.video} type={selected?.type} />
-                    Your browser does not support the video tag.
-                  </video>
-                );
-              })()}
+              <h2 className="text-xl font-bold mb-3">{selectedCategory}</h2>
+
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                controls
+                onEnded={handleClose}
+                style={{ width: "100%", maxHeight: "300px", borderRadius: "8px" }}
+              >
+                <source
+                  src={categories.find(c => c.name === selectedCategory)?.video}
+                  type={categories.find(c => c.name === selectedCategory)?.type}
+                />
+              </video>
             </motion.div>
           </motion.div>
         )}
