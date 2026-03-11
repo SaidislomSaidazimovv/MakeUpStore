@@ -2,22 +2,14 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
-  { name: "Rexaline", image: "/images/categoryimglist4.jpg", video: "/video/carouselvideo1.mp4" },
-  { name: "Lalique", image: "/images/categoryimglist5.jpg", video: "/video/carouselvideo2.mp4" },
-  { name: "Filorga", image: "/images/categoryimglist6.jpg", video: "/video/carouselvideo3.mp4" },
-  { name: "Lovely", image: "/images/categoryimglist2.jpg", video: "/video/carouselvideo4.webm" },
-  {
-    name: "ARI ANWA Skin",
-    image: "/images/categoryimglist3.jpg",
-    video: "/video/carouselvideo6.mp4",
-  },
-  { name: "Vipera", image: "/images/categoryimglist7.jpg", video: "/video/carouselvideo5.webm" },
-  { name: "Bentley", image: "/images/categoryimglist1.jpg", video: "/video/carouselvideo7.mp4" },
-  {
-    name: "Faconnable",
-    image: "/images/categoryimglist8.jpg",
-    video: "/video/carouselvideo8.mp4",
-  },
+  { name: "Rexaline", image: "/images/categoryimglist4.jpg", video: "/video/carouselvideo1.mp4", type: "video/mp4" },
+  { name: "Lalique", image: "/images/categoryimglist5.jpg", video: "/video/carouselvideo2.mp4", type: "video/mp4" },
+  { name: "Filorga", image: "/images/categoryimglist6.jpg", video: "/video/carouselvideo3.mp4", type: "video/mp4" },
+  { name: "Lovely", image: "/images/categoryimglist2.jpg", video: "/video/carouselvideo4.webm", type: "video/webm" },
+  { name: "ARI ANWA Skin", image: "/images/categoryimglist3.jpg", video: "/video/carouselvideo6.mp4", type: "video/mp4" },
+  { name: "Vipera", image: "/images/categoryimglist7.jpg", video: "/video/carouselvideo5.webm", type: "video/webm" },
+  { name: "Bentley", image: "/images/categoryimglist1.jpg", video: "/video/carouselvideo7.mp4", type: "video/mp4" },
+  { name: "Faconnable", image: "/images/categoryimglist8.jpg", video: "/video/carouselvideo8.mp4", type: "video/mp4" },
 ];
 
 const CategoryProductList: React.FC = () => {
@@ -80,21 +72,21 @@ const CategoryProductList: React.FC = () => {
               <h2 className="text-2xl font-bold mb-4 -mt-3">
                 {selectedCategory}
               </h2>
-              <video
-                autoPlay
-                muted
-                className="w-full rounded-lg shadow-lg"
-                onEnded={() => handleClose()}
-                controls
-              >
-                <source
-                  src={
-                    categories.find((c) => c.name === selectedCategory)?.video
-                  }
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              {(() => {
+                const selected = categories.find((c) => c.name === selectedCategory);
+                return (
+                  <video
+                    autoPlay
+                    muted
+                    className="w-full rounded-lg shadow-lg"
+                    onEnded={() => handleClose()}
+                    controls
+                  >
+                    <source src={selected?.video} type={selected?.type} />
+                    Your browser does not support the video tag.
+                  </video>
+                );
+              })()}
             </motion.div>
           </motion.div>
         )}
