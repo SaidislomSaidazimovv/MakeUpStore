@@ -6,6 +6,7 @@ import CategoryCarousel from "./category/CategoryProductList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PageTransition from "../PageTransition";
+import { motion } from "framer-motion";
 
 const ProductList: React.FC = () => {
   const [category] = useState<string | null>(null);
@@ -48,11 +49,14 @@ const ProductList: React.FC = () => {
         </div>
       )}
 
-      <div>
-        <h2 className="flex items-center justify-center font-semibold text-3xl mt-10 mb-16">
-          Предложения брендов
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center justify-center font-semibold text-3xl mt-10 mb-16">
+        Предложения брендов
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(50, 55).map((product) => (
@@ -90,11 +94,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center justify-center font-semibold text-3xl mb-16 mt-10">
-          Парфюмерия
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center justify-center font-semibold text-3xl mb-16 mt-10">
+        Парфюмерия
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(80, 85).map((product) => (
@@ -107,7 +114,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -122,7 +135,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
@@ -149,11 +162,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-          Макияж
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
+        Макияж
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(140, 145).map((product) => (
@@ -166,7 +182,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -181,7 +203,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
@@ -208,11 +230,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-          Волосы
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
+        Волосы
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(235, 240).map((product) => (
@@ -225,7 +250,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -240,7 +271,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
@@ -266,11 +297,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-          Лицо
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
+        Лицо
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(270, 275).map((product) => (
@@ -283,7 +317,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -298,7 +338,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
@@ -325,11 +365,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center mt-10 justify-center font-semibold text-3xl mb-10">
-          Тело и ванна
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mt-10 justify-center font-semibold text-3xl mb-10">
+        Тело и ванна
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(490, 495).map((product) => (
@@ -342,7 +385,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -357,7 +406,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
@@ -384,11 +433,14 @@ const ProductList: React.FC = () => {
         </div>
       </div>
 
-      <div>
-        <h2 className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
-          Мужчинам
-        </h2>
-      </div>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center mt-10 justify-center font-semibold text-3xl mb-16">
+        Мужчинам
+      </motion.h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {filteredProducts?.slice(760, 765).map((product) => (
@@ -401,7 +453,13 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-center gap-10 mt-24 mx-5">
+      <motion.div
+        className="flex justify-center gap-10 mt-24 mx-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="relative group">
           <img
             className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
@@ -416,7 +474,7 @@ const ProductList: React.FC = () => {
             alt="mainImg"
           />
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
         <div className="flex items-center">
