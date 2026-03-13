@@ -37,6 +37,9 @@ const Header: React.FC = () => {
     (state: RootState) => state.likes.items.length
   );
   const currency = useSelector((state: RootState) => state.currency.selected);
+  const { user: authUser, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
 
   const openSearchModal = () => {
     setIsSearchModalOpen(true);
@@ -122,7 +125,15 @@ const Header: React.FC = () => {
             to="/profile"
             className="text-gray-700 hover:text-gray-900 transition-colors duration-300"
           >
-            <CiUser className="w-8 h-9" />
+            {isAuthenticated && authUser?.photoURL ? (
+              <img
+                src={authUser.photoURL}
+                alt="avatar"
+                className="w-8 h-8 rounded-full border-2 border-rose-300 object-cover"
+              />
+            ) : (
+              <CiUser className="w-8 h-9" />
+            )}
           </Link>
           <Link
             to="/like"
