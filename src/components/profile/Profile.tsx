@@ -1,129 +1,155 @@
-import { useState } from "react";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { auth, googleProvider, appleProvider } from "../../firebase/config";
+import { setUser, setError, setLoading, logout } from "../../features/authSlice";
+import { RootState } from "../../app/index";
 import { useTranslation } from "react-i18next";
-import { Loader2 } from "lucide-react";
-import { FcGoogle } from "react-icons/fc";
-import { IoLogoAppleAppstore } from "react-icons/io5";
+import PageTransition from "../PageTransition";
 
-const Profile = () => {
+export default function Profile() {
+  const dispatch = useDispatch();
+  const { user, isAuthenticated, loading, error } = useSelector(
+    (state: RootState) => state.auth
+  );
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+  const handleGoogleLogin = async () => {
+    try {
+      dispatch(setLoading(true));
+      const result = await signInWithPopup(auth, googleProvider);
+      dispatch(
+        setUser({
+          uid: result.user.uid,
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        })
+      );
+    } catch (err: any) {
+      dispatch(setError(err.message));
+    }
   };
 
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-      <div className="w-full max-w-md p-6 sm:p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center text-gray-900">
-          {t("profile.title")}
-        </h2>
-        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              {t("profile.email")}
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="w-full px-3 py-2 mt-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              {t("profile.password")}
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className="w-full px-3 py-2 mt-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
-              >
-                {t("profile.forgotPassword")}
-              </a>
-            </div>
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-              ) : null}
-              {isLoading ? t("profile.signingIn") : t("profile.signIn")}
-            </button>
-          </div>
-        </form>
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">{t("profile.orLoginWith")}</span>
-            </div>
-          </div>
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <div>
-              <a
-                href="#"
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
-              >
-                <FcGoogle className="w-5 h-5 text-blue-500" />
-                <span className="ml-2">Google</span>
-              </a>
-            </div>
-            <div>
-              <a
-                href="#"
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-colors"
-              >
-                <IoLogoAppleAppstore className="w-5 h-5 text-gray-900" />
-                <span className="ml-2">Apple</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <p className="mt-8 text-center text-sm text-gray-600">
-          {t("profile.noAccount")}
-          <a
-            href="#"
-            className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
-          >
-            {t("profile.register")}
-          </a>
-        </p>
-      </div>
-    </div>
-  );
-};
+  const handleAppleLogin = async () => {
+    try {
+      dispatch(setLoading(true));
+      const result = await signInWithPopup(auth, appleProvider);
+      dispatch(
+        setUser({
+          uid: result.user.uid,
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        })
+      );
+    } catch (err: any) {
+      dispatch(setError(err.message));
+    }
+  };
 
-export default Profile;
+  const handleLogout = async () => {
+    await signOut(auth);
+    dispatch(logout());
+  };
+
+  // LOGGED IN VIEW
+  if (isAuthenticated && user) {
+    return (
+      <PageTransition>
+        <div className="min-h-screen flex items-center justify-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md text-center"
+          >
+            {user.photoURL && (
+              <img
+                src={user.photoURL}
+                alt="avatar"
+                className="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-rose-100"
+              />
+            )}
+            <h2 className="text-xl font-semibold text-gray-800 mb-1">
+              {user.displayName}
+            </h2>
+            <p className="text-gray-400 text-sm mb-6">{user.email}</p>
+
+            <motion.button
+              onClick={handleLogout}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-3 rounded-full border border-rose-200 text-rose-500 hover:bg-rose-50 transition font-medium"
+            >
+              {t("profile.logout")}
+            </motion.button>
+          </motion.div>
+        </div>
+      </PageTransition>
+    );
+  }
+
+  // LOGIN VIEW
+  return (
+    <PageTransition>
+      <div className="min-h-screen flex items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md"
+        >
+          <h1 className="text-2xl font-semibold text-center text-gray-800 mb-2">
+            {t("profile.title")}
+          </h1>
+          <p className="text-center text-gray-400 text-sm mb-8">
+            {t("profile.subtitle")}
+          </p>
+
+          {error && (
+            <div className="bg-red-50 text-red-400 text-sm rounded-xl px-4 py-3 mb-4 text-center">
+              {error}
+            </div>
+          )}
+
+          {/* Google Login */}
+          <motion.button
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            className="w-full flex items-center justify-center gap-3 py-3 rounded-full border border-gray-200 hover:bg-gray-50 transition mb-3 font-medium text-gray-700"
+          >
+            <img
+              src="/images/google-icon.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            {t("profile.googleLogin")}
+          </motion.button>
+
+          {/* Apple Login */}
+          <motion.button
+            onClick={handleAppleLogin}
+            disabled={loading}
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            className="w-full flex items-center justify-center gap-3 py-3 rounded-full bg-black text-white hover:bg-gray-900 transition mb-6 font-medium"
+          >
+            <img
+              src="/images/apple-icon.svg"
+              alt="Apple"
+              className="w-5 h-5 invert"
+            />
+            {t("profile.appleLogin")}
+          </motion.button>
+
+          {loading && (
+            <div className="flex justify-center">
+              <div className="w-6 h-6 border-4 border-rose-400 border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </PageTransition>
+  );
+}
