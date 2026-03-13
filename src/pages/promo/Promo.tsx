@@ -45,9 +45,9 @@ const Promo = () => {
   return (
     <div className="max-w mx-auto p-4">
       <h2 className="text-3xl font-bold text-center mb-8">{t("promo.title")}</h2>
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         <SideBar />
-        <div className="relative overflow-hidden rounded-lg shadow-lg">
+        <div className="relative overflow-hidden rounded-lg shadow-lg w-full">
           <div
             className={`transition-opacity duration-300 ${
               isLoading ? "opacity-50" : "opacity-100"
@@ -75,7 +75,7 @@ const Promo = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-center ml-60 mt-4 mb-10">
+      <div className="flex justify-center mt-4 mb-10">
         {brands.map((_, index) => (
           <button
             key={index}
@@ -90,84 +90,69 @@ const Promo = () => {
         ))}
       </div>
 
-      <div className="flex justify-center">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/bannerimg1.jpg"
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/bannerimg2.jpg"
-            alt="promoImg"
-          />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 px-4 md:px-0">
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/bannerimg1.jpg"
+          alt="promoImg"
+        />
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/bannerimg2.jpg"
+          alt="promoImg"
+        />
       </div>
 
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/bannerimg3.jpg"
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/bannerimg4.jpg"
-            alt="promoImg"
-          />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 px-4 md:px-0">
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/bannerimg3.jpg"
+          alt="promoImg"
+        />
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/bannerimg4.jpg"
+          alt="promoImg"
+        />
       </div>
 
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg1.jpg"
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg2.jpg"
-            alt="promoImg"
-          />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 px-4 md:px-0">
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg1.jpg"
+          alt="promoImg"
+        />
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg2.jpg"
+          alt="promoImg"
+        />
       </div>
 
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg3.jpg"
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg4.jpg"
-            alt="promoImg"
-          />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 px-4 md:px-0">
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg3.jpg"
+          alt="promoImg"
+        />
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg4.jpg"
+          alt="promoImg"
+        />
       </div>
 
-      <div className="flex justify-center mt-5">
-        <div className="mr-60"></div>
-        <div className="grid grid-cols-2 gap-5">
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg5.jpg"
-            alt="promoImg"
-          />
-          <img
-            className="rounded-lg transform duration-300 hover:scale-105"
-            src="/images/heroimg6.jpg"
-            alt="promoImg"
-          />
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5 px-4 md:px-0">
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg5.jpg"
+          alt="promoImg"
+        />
+        <img
+          className="rounded-lg transform duration-300 hover:scale-105 w-full"
+          src="/images/heroimg6.jpg"
+          alt="promoImg"
+        />
       </div>
     </div>
   );
