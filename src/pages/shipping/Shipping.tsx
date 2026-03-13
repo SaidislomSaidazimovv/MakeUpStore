@@ -14,7 +14,7 @@ const Shipping = () => {
   };
 
   return (
-    <div className="flex flex-col items-center py-10">
+    <div className="flex flex-col items-center py-10 px-4 md:px-8 lg:px-16">
       <h2 className="text-xl font-semibold mb-4">
         {t("shipping.title")}
       </h2>
@@ -22,13 +22,13 @@ const Shipping = () => {
         {t("shipping.subtitle")}
       </p>
 
-      <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 shadow-md">
+      <div className="flex flex-col sm:flex-row items-center bg-gray-100 rounded-full px-4 py-2 shadow-md w-full max-w-sm">
         <input
           type="text"
           value={city}
           onChange={handleCityChange}
           placeholder={t("shipping.cityPlaceholder")}
-          className="bg-transparent outline-none w-64 p-2"
+          className="bg-transparent outline-none w-full p-2"
         />
         <button
           onClick={handleSearch}
