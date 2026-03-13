@@ -5,6 +5,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { useAuth } from "./hooks/useAuth";
+import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
 
 const ProductList = lazy(() => import("./components/product/ProductList"));
@@ -20,6 +22,7 @@ const Profile = lazy(() => import("./components/profile/Profile"));
 const NotFound = lazy(() => import("./pages/not-found/NotFound"));
 
 const App: React.FC = () => {
+  useAuth();
   const location = useLocation();
 
   return (
@@ -34,8 +37,8 @@ const App: React.FC = () => {
               <Route path="/category/:category" element={<CategoryPage />} />
               <Route path="/product/:id" element={<SingleProduct />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/like" element={<Like />} />
-              <Route path="/cart" element={<Cart />} />
+              <Route path="/like" element={<PrivateRoute><Like /></PrivateRoute>} />
+              <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
               <Route path="/promo" element={<Promo />} />
               <Route path="/shipping" element={<Shipping />} />
               <Route path="/about" element={<About />} />
