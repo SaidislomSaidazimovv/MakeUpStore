@@ -166,8 +166,8 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
         transition={{ duration: 0.25, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="max-w-5xl mx-auto px-8 py-5">
-          <div className="flex items-center gap-4">
+        <div className="w-full md:max-w-5xl mx-auto px-4 sm:px-8 py-5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <SearchIcon className="text-rose-400 shrink-0" size={22} />
             <input
               ref={inputRef}
