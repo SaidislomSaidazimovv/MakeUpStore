@@ -85,7 +85,11 @@
     "signIn": "登录",
     "orLoginWith": "或通过以下方式登录",
     "noAccount": "没有账号？",
-    "register": "注册"
+    "register": "注册",
+    "subtitle": "登录以访问购物车和收藏夹",
+    "googleLogin": "通过 Google 登录",
+    "appleLogin": "通过 Apple 登录",
+    "logout": "退出登录"
   },
   "footer": {
     "aboutUs": "关于我们",

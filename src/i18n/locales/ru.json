@@ -85,7 +85,11 @@
     "signIn": "Войти",
     "orLoginWith": "Или войти через",
     "noAccount": "Нет аккаунта?",
-    "register": "Регистрация"
+    "register": "Регистрация",
+    "subtitle": "Войдите для доступа к корзине и избранному",
+    "googleLogin": "Войти через Google",
+    "appleLogin": "Войти через Apple",
+    "logout": "Выйти"
   },
   "footer": {
     "aboutUs": "О нас",

@@ -85,7 +85,11 @@
     "signIn": "Kirish",
     "orLoginWith": "Yoki orqali kirish",
     "noAccount": "Akkauntingiz yo'qmi?",
-    "register": "Ro'yxatdan o'tish"
+    "register": "Ro'yxatdan o'tish",
+    "subtitle": "Savat va sevimlilarga kirish uchun tizimga kiring",
+    "googleLogin": "Google orqali kirish",
+    "appleLogin": "Apple orqali kirish",
+    "logout": "Chiqish"
   },
   "footer": {
     "aboutUs": "Biz haqimizda",

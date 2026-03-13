@@ -85,7 +85,11 @@
     "signIn": "Sign In",
     "orLoginWith": "Or login with",
     "noAccount": "Don't have an account?",
-    "register": "Register"
+    "register": "Register",
+    "subtitle": "Sign in to access your cart and favorites",
+    "googleLogin": "Continue with Google",
+    "appleLogin": "Continue with Apple",
+    "logout": "Sign Out"
   },
   "footer": {
     "aboutUs": "About Us",
