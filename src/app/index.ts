@@ -4,6 +4,7 @@ import { makeupApi } from "../services/makeupApi";
 import cartReducer from "../features/cartSlice";
 import currencyReducer from "../features/currencySlice";
 import likesReducer from "../features/likeSlice";
+import authReducer from "../features/authSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     cart: cartReducer,
     currency: currencyReducer,
     likes: likesReducer,
+    auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(makeupApi.middleware),
