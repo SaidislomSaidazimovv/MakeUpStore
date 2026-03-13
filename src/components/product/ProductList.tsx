@@ -68,20 +68,20 @@ const ProductList: React.FC = () => {
         ))}
       </div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[130px]" src="/images/mainImg1.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-20 sm:w-32 flex-shrink-0" src="/images/mainImg1.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewLipstick")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src="/images/mainImg2.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-16 sm:w-24 flex-shrink-0" src="/images/mainImg2.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewLipstick")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -110,7 +110,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -118,34 +118,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/mainimg5.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/mainimg6.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[120px]" src="/images/mainimg3.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-20 sm:w-28 flex-shrink-0" src="/images/mainimg3.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewPerfume")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[80px]" src="/images/mainimg4.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-16 sm:w-20 flex-shrink-0" src="/images/mainimg4.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewPerfume")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -174,7 +174,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -182,34 +182,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg5.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg6.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[70px]" src="/images/mainimg-9.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-14 sm:w-16 flex-shrink-0" src="/images/mainimg-9.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewMascara")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[45px]" src="/images/mainimg-10.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-10 sm:w-12 flex-shrink-0" src="/images/mainimg-10.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewMascara")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -238,7 +238,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -246,34 +246,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg3.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg4.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[185px]" src="/images/mainimg7.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-24 sm:w-44 flex-shrink-0" src="/images/mainimg7.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewShampoo1")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[105px]" src="/images/mainimg8.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-16 sm:w-24 flex-shrink-0" src="/images/mainimg8.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewShampoo2")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -302,7 +302,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -310,34 +310,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg2.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/heroimg1.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src="/images/mainimg11.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-16 sm:w-24 flex-shrink-0" src="/images/mainimg11.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[175px]" src="/images/mainimg12.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-24 sm:w-44 flex-shrink-0" src="/images/mainimg12.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -366,7 +366,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -374,34 +374,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/bannerimg4.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/bannerimg2.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[90px]" src="/images/seperateimg1.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-16 sm:w-24 flex-shrink-0" src="/images/seperateimg1.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[175px]" src="/images/seperateimg2.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-24 sm:w-44 flex-shrink-0" src="/images/seperateimg2.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
@@ -430,7 +430,7 @@ const ProductList: React.FC = () => {
       </div>
 
       <motion.div
-        className="flex justify-center gap-10 mt-24 mx-5"
+        className="flex flex-col sm:flex-row justify-center gap-5 sm:gap-10 mt-24 mx-2 sm:mx-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -438,34 +438,34 @@ const ProductList: React.FC = () => {
       >
         <div className="relative group">
           <img
-            className="w-[100%] transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/bannerimg3.jpg"
             alt="mainImg"
           />
         </div>
         <div className="relative group">
           <img
-            className="w-[100%] =mr-5 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+            className="w-full transition-transform duration-300 ease-in-out transform group-hover:scale-105"
             src="/images/bannerimg1.jpg"
             alt="mainImg"
           />
         </div>
       </motion.div>
 
-      <div className="flex justify-between mt-16 rounded-lg mx-5 bg-gray-100 py-10 px-10">
+      <div className="flex flex-col sm:flex-row sm:justify-between mt-16 rounded-lg mx-2 sm:mx-5 bg-gray-100 py-6 sm:py-10 px-4 sm:px-10 gap-6">
         <div className="flex items-center">
-          <img className="mr-20 w-[125px]" src="/images/seperateimg3.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-20 sm:w-28 flex-shrink-0" src="/images/seperateimg3.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerAnna")}</p>
           </div>
         </div>
         <div className="flex items-center">
-          <img className="mr-20 w-[140px]" src="/images/seperateimg4.jpg" alt="mainImg" />
+          <img className="mr-4 sm:mr-20 w-20 sm:w-32 flex-shrink-0" src="/images/seperateimg4.jpg" alt="mainImg" />
           <div>
-            <p className="text-xl font-semibold w-80">
+            <p className="text-base sm:text-xl font-semibold">
               {t("home.reviewCream")}
             </p>
             <p className="mt-4">{t("home.reviewerMilena")}</p>
