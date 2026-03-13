@@ -1,5 +1,5 @@
 .header_logo {
-  width: 264px;
-  height: 60px;
-  margin-left: 35px;
+  width: auto;
+  max-width: 200px;
+  height: auto;
 }

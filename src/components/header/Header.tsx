@@ -18,6 +18,7 @@ import "./Header.css";
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const languages = [
     { code: "en", label: "EN" },
@@ -47,8 +48,8 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-white top-0 z-50 shadow-sm container mx-auto">
-      <div className="bg-gray-100 py-2 text-sm">
-        <div className="container mx-auto flex justify-between items-center px-4">
+      <div className="bg-gray-100 py-2 text-sm hidden sm:block">
+        <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
           <span className="text-gray-600">{t("nav.freeDelivery")}</span>
           <div className="flex space-x-4 text-gray-600">
             <Link to="/promo" className="text-red-500">
@@ -67,7 +68,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 flex justify-between items-center">
+      <div className="container mx-auto px-4 md:px-8 py-4 md:py-8 flex justify-between items-center">
         <motion.button
           onClick={openSearchModal}
           className="text-gray-700 hover:text-gray-900 transition-colors duration-300"
@@ -77,12 +78,12 @@ const Header: React.FC = () => {
           <TfiSearch className="w-6 h-6" />
         </motion.button>
 
-        <Link to="/" className="text-3xl font-bold ml-60 text-black">
+        <Link to="/" className="text-3xl font-bold text-black">
           <img className="header_logo" src={headerLogo} alt="headerlogo" />
         </Link>
 
-        <div className="flex items-center space-x-6">
-          <div className="relative group">
+        <div className="flex items-center space-x-3 sm:space-x-6">
+          <div className="relative group hidden sm:block">
             <button className="flex items-center gap-1 px-3 py-1 border border-rose-200 rounded-full text-sm text-rose-600 hover:bg-rose-50 transition">
               {languages.find(l => l.code === i18n.language)?.label || "EN"}
               <ChevronDown size={14} />
@@ -101,7 +102,7 @@ const Header: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <select
               value={currency}
               onChange={(e) => dispatch(setCurrency(e.target.value))}
@@ -141,6 +142,15 @@ const Header: React.FC = () => {
               {cartItemsCount}
             </span>
           </Link>
+
+          <button
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-0.5 bg-gray-800 transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
         </div>
       </div>
 
@@ -150,7 +160,7 @@ const Header: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <nav className="flex flex-wrap gap-6 sm:gap-8 md:gap-12 justify-center px-4 py-2">
+      <nav className="hidden md:flex flex-wrap gap-6 sm:gap-8 md:gap-12 justify-center px-4 py-2">
         {["blush", "bronzer", "eyeliner", "eyeshadow", "foundation", "lipstick", "mascara"].map((cat) => (
           <NavLink
             key={cat}
@@ -167,6 +177,55 @@ const Header: React.FC = () => {
           </NavLink>
         ))}
       </nav>
+
+      {menuOpen && (
+        <div className="md:hidden flex flex-col items-center gap-4 py-4 border-t bg-white">
+          {["blush", "bronzer", "eyeliner", "eyeshadow", "foundation", "lipstick", "mascara"].map((cat) => (
+            <NavLink
+              key={cat}
+              to={`/category/${cat}`}
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `text-lg font-bold transition-all duration-200 ${
+                  isActive ? "text-rose-600" : "text-gray-700 hover:text-rose-500"
+                }`
+              }
+            >
+              {t(`nav.${cat}`)}
+            </NavLink>
+          ))}
+          <div className="flex items-center gap-3 pt-2 border-t w-full justify-center">
+            <div className="relative group">
+              <button className="flex items-center gap-1 px-3 py-1 border border-rose-200 rounded-full text-sm text-rose-600 hover:bg-rose-50 transition">
+                {languages.find(l => l.code === i18n.language)?.label || "EN"}
+                <ChevronDown size={14} />
+              </button>
+              <div className="absolute left-1/2 -translate-x-1/2 top-8 bg-white border border-rose-100 rounded-xl shadow-lg hidden group-hover:flex flex-col z-50 min-w-[80px]">
+                {languages.map(lang => (
+                  <button
+                    key={lang.code}
+                    onClick={() => i18n.changeLanguage(lang.code)}
+                    className={`flex items-center gap-2 px-3 py-2 text-sm hover:bg-rose-50 transition first:rounded-t-xl last:rounded-b-xl ${
+                      i18n.language === lang.code ? "text-rose-600 font-semibold" : "text-gray-700"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <select
+              value={currency}
+              onChange={(e) => dispatch(setCurrency(e.target.value))}
+              className="bg-gray-100 border border-gray-300 rounded-md py-1 pl-2 pr-8 cursor-pointer hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              disabled={isLoading}
+            >
+              <option value="USD">USD</option>
+              <option value="UZS">UZS</option>
+            </select>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
