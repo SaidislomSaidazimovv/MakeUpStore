@@ -45,26 +45,26 @@ const Cart: React.FC = () => {
 
   return (
     <PageTransition>
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">{t("cart.title")}</h1>
       {cartItems.map((item) => (
         <div
           key={item.id}
-          className="flex items-center justify-between border-b py-4"
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b py-4 gap-3"
         >
           <div className="flex items-center">
             <img
               src={item.image_link}
               alt={item.name}
-              className="w-16 h-16 object-cover rounded-md mr-4"
+              className="w-16 h-16 object-cover rounded-md mr-4 flex-shrink-0"
             />
-            <div>
-              <h3 className="text-lg font-semibold">{item.name}</h3>
+            <div className="min-w-0">
+              <h3 className="text-lg font-semibold truncate">{item.name}</h3>
               <p className="text-gray-600">{item.brand}</p>
               <p className="text-sm text-blue-600">{item.selectedOption}</p>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center self-end sm:self-auto">
             <div className="flex items-center border rounded-md mr-4">
               <button
                 onClick={() =>
@@ -94,7 +94,7 @@ const Cart: React.FC = () => {
           </div>
         </div>
       ))}
-      <div className="mt-6 flex justify-between items-center">
+      <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <button
           onClick={handleClearCart}
           className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors duration-200"
