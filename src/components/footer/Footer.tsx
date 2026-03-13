@@ -27,7 +27,7 @@ const Footer = () => {
     <footer className="bg-white text-gray-600 py-6 text-sm">
       <SearchPart />
       <div className="container mt-16 mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-semibold mb-3">{t("footer.aboutUs")}</h3>
             <ul className="space-y-2">
@@ -120,10 +120,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <div className="flex flex-wrap justify-between items-center">
+          <div className="flex flex-col md:flex-row flex-wrap justify-between items-center">
             <div className="w-full md:w-auto mb-4 md:mb-0">
-              <p className="font-semibold ml-64">{t("footer.global")}</p>
-              <div className="flex flex-wrap ml-64 gap-2 mt-2">
+              <p className="font-semibold ml-0 md:ml-8 lg:ml-16">{t("footer.global")}</p>
+              <div className="flex flex-wrap ml-0 md:ml-8 lg:ml-16 gap-2 mt-2">
                 <img src={austria} alt="Austria" className="h-6 w-auto" />
                 <img src={belgium} alt="Belgium" className="h-6 w-auto" />
                 <img src={bulgarian} alt="Bulgaria" className="h-6 w-auto" />
