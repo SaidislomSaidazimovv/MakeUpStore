@@ -10,7 +10,7 @@ const SideBar: React.FC = () => {
   ];
 
   return (
-    <div className="w-1/4 bg-gradient-to-b from-pink-100 to-purple-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <div className="hidden md:block md:w-1/5 lg:w-1/4 min-w-[180px] bg-gradient-to-b from-pink-100 to-purple-200 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
       <h2 className="text-xl font-semibold mb-6 text-gray-700 border-b pb-2">
         Categories
       </h2>
